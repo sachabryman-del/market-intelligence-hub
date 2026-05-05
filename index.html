@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Finary One — Intelligence Hub</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300&display=swap');
+
+:root {
+  --cream: #f5f0e8;
+  --cream2: #ede8de;
+  --cream3: #e4ddd0;
+  --gold: #c9a96e;
+  --gold-dark: #a07840;
+  --gold-light: #e8c98a;
+  --navy: #0e1535;
+  --navy2: #1a2448;
+  --text: #1a1508;
+  --text2: #4a4030;
+  --text3: #8a7a60;
+  --border: rgba(90,70,30,0.12);
+  --border2: rgba(90,70,30,0.2);
+  --tag-bg: rgba(201,169,110,0.12);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ─── NAVBAR ─── */
+.navbar {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(245,240,232,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border2);
+  padding: 0 40px;
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+}
+
+.nav-left { display: flex; align-items: baseline; gap: 10px; }
+.nav-brand-name {
+  font-family: var(--serif); font-size: 20px; font-weight: 700;
+  color: var(--navy); letter-spacing: -0.02em; line-height: 1;
+}
+.nav-brand-name em { color: var(--gold); font-style: italic; }
+.nav-brand-sub {
+  font-size: 10px; font-weight: 400; color: var(--text3);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+.nav-search {
+  flex: 1; max-width: 380px; position: relative;
+}
+.nav-search input {
+  width: 100%; background: rgba(255,255,255,0.7);
+  border: 1px solid var(--border2); color: var(--text);
+  font-family: var(--sans); font-size: 13px;
+  padding: 8px 14px 8px 34px; outline: none;
+  border-radius: 100px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.nav-search input::placeholder { color: var(--text3); }
+.nav-search input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,110,0.15); }
+.search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 13px; pointer-events: none; }
+
+.nav-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+.nav-datetime { font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 0.04em; text-align: right; line-height: 1.5; }
+
+/* ─── BRIEFING BAR ─── */
+.briefing-bar {
+  background: var(--navy);
+  padding: 9px 40px;
+  display: flex; align-items: center; gap: 12px;
+}
+.live-pill {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(201,169,110,0.2); border: 1px solid rgba(201,169,110,0.4);
+  padding: 2px 10px; border-radius: 100px; flex-shrink: 0;
+}
+.live-dot { width: 5px; height: 5px; background: var(--gold-light); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.live-text { font-size: 9px; font-weight: 500; color: var(--gold-light); letter-spacing: 0.1em; text-transform: uppercase; }
+.briefing-stats { font-size: 12px; color: rgba(255,255,255,0.6); }
+.briefing-stats strong { color: var(--gold-light); font-weight: 500; }
+.briefing-time { margin-left: auto; font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.35); }
+
+/* ─── TABS ─── */
+.tabs-bar {
+  background: var(--cream2);
+  border-bottom: 1px solid var(--border2);
+  padding: 0 40px;
+  display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
+}
+.tabs-bar::-webkit-scrollbar { display: none; }
+.tab {
+  padding: 12px 20px; font-size: 12px; font-weight: 400;
+  color: var(--text3); letter-spacing: 0.04em;
+  cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s; user-select: none;
+  position: relative;
+}
+.tab:hover { color: var(--text2); }
+.tab.active { color: var(--gold-dark); font-weight: 500; border-bottom-color: var(--gold); }
+
+/* ─── LAYOUT ─── */
+.page { padding: 36px 40px 64px; max-width: 1440px; }
+
+/* ─── HERO GRID (top 3 featured) ─── */
+.hero-section { margin-bottom: 48px; }
+.hero-label {
+  font-size: 10px; font-weight: 500; color: var(--gold-dark);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+}
+.hero-label::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2px;
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border2);
+}
+
+.hero-main {
+  grid-row: 1 / 3;
+  background: var(--navy2);
+  padding: 32px 28px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 300px;
+  position: relative; cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+.hero-main:hover { background: var(--navy); }
+.hero-main-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #0e1535 0%, #1a2448 40%, #2d1f5e 100%);
+}
+.hero-main-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(14,21,53,0.95) 30%, rgba(14,21,53,0.4) 100%);
+}
+.hero-main-content { position: relative; z-index: 1; }
+.hero-cat-badge {
+  display: inline-block; font-size: 9px; font-weight: 500;
+  color: var(--gold-light); background: rgba(201,169,110,0.18);
+  border: 1px solid rgba(201,169,110,0.3);
+  padding: 3px 10px; border-radius: 100px;
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;
+}
+.hero-main-title {
+  font-family: var(--serif); font-size: 24px; font-weight: 700;
+  color: #fff; line-height: 1.3; margin-bottom: 10px;
+}
+.hero-main-meta { display: flex; align-items: center; gap: 8px; }
+.hero-source { font-size: 11px; color: var(--gold-light); font-weight: 500; }
+.hero-time { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.4); }
+.hero-summary-expanded {
+  display: none; margin-top: 12px;
+  font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6;
+}
+.hero-main.expanded .hero-summary-expanded { display: block; }
+
+.hero-secondary {
+  background: var(--cream2);
+  padding: 20px 20px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  cursor: pointer; border-left: 1px solid var(--border2);
+  transition: background 0.15s; min-height: 140px;
+}
+.hero-secondary:first-of-type { border-bottom: 1px solid var(--border2); }
+.hero-secondary:hover { background: #fff; }
+.hero-sec-cat { font-size: 9px; font-weight: 500; color: var(--gold-dark); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.hero-sec-title {
+  font-family: var(--serif); font-size: 15px; font-weight: 600;
+  color: var(--text); line-height: 1.4; margin-bottom: 10px;
+  flex: 1;
+}
+.hero-secondary:hover .hero-sec-title { color: var(--navy); }
+.hero-sec-meta { display: flex; align-items: center; gap: 6px; }
+.hero-sec-source { font-size: 11px; color: var(--gold-dark); font-weight: 500; }
+.hero-sec-time { font-family: var(--mono); font-size: 10px; color: var(--text3); }
+.hero-sec-summary {
+  display: none; margin-top: 8px;
+  font-size: 12px; color: var(--text2); line-height: 1.6;
+  border-top: 1px solid var(--border); padding-top: 8px;
+}
+.hero-secondary.expanded .hero-sec-summary { display: block; }
+
+/* ─── CATEGORIES GRID ─── */
+.categories-section { }
+.cat-section-label {
+  font-size: 10px; font-weight: 500; color: var(--text3);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+}
+.cat-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
+
+.cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border2); border-radius: 16px; overflow: hidden; border: 1px solid var(--border2); margin-bottom: 2px; }
+.cat-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border2); border-radius: 16px; overflow: hidden; border: 1px solid var(--border2); margin-top: 12px; }
+
+.cat-card {
+  background: var(--cream);
+  padding: 20px 22px;
+  transition: background 0.15s;
+}
+.cat-card:hover { background: #fff; }
+
+.cat-card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.cat-card-title {
+  font-size: 10px; font-weight: 600; color: var(--gold-dark);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+}
+.cat-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.cat-count { font-family: var(--mono); font-size: 10px; color: var(--text3); }
+
+.art-item { padding: 9px 0; border-bottom: 1px solid rgba(90,70,30,0.06); cursor: pointer; }
+.art-item:last-child { border-bottom: none; padding-bottom: 0; }
+.art-item:first-child { padding-top: 0; }
+.art-title {
+  font-size: 13px; font-weight: 400; color: var(--text);
+  line-height: 1.5; margin-bottom: 4px; transition: color 0.15s;
+}
+.art-item:hover .art-title { color: var(--navy); }
+.art-meta { display: flex; align-items: center; gap: 6px; }
+.art-source { font-size: 11px; font-weight: 500; color: var(--gold-dark); }
+.art-sep { font-size: 10px; color: var(--cream3); }
+.art-time { font-family: var(--mono); font-size: 10px; color: var(--text3); }
+.art-summary {
+  display: none; margin-top: 8px; padding: 9px 12px;
+  background: rgba(201,169,110,0.08);
+  border-left: 2px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  font-size: 12px; color: var(--text2); line-height: 1.65;
+}
+.art-item.expanded .art-summary { display: block; }
+
+/* ─── THEMES ─── */
+.themes-card {
+  background: var(--navy);
+  border-radius: 16px; padding: 22px 24px; margin-top: 12px;
+}
+.themes-title-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.themes-heading {
+  font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.themes-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.theme-tag {
+  font-size: 11px; color: rgba(255,255,255,0.55);
+  padding: 5px 13px; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 100px;
+  cursor: pointer; transition: all 0.15s; letter-spacing: 0.02em;
+}
+.theme-tag:hover { color: var(--gold-light); border-color: rgba(201,169,110,0.35); background: rgba(201,169,110,0.08); }
+.theme-tag.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 500; }
+.tag-n { font-size: 9px; opacity: 0.5; margin-left: 2px; }
+
+/* ─── EMPTY / NO RESULTS ─── */
+.no-results { padding: 60px 40px; text-align: center; }
+.no-results p { font-size: 14px; color: var(--text3); }
+.no-results span { color: var(--gold-dark); font-style: italic; font-family: var(--serif); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy);
+  padding: 16px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-brand { font-family: var(--serif); font-size: 14px; color: rgba(255,255,255,0.4); }
+.footer-brand em { color: var(--gold); font-style: italic; }
+.footer-info { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 0.04em; }
+
+@media (max-width: 900px) {
+  .navbar, .briefing-bar, .tabs-bar, .page { padding-left: 16px; padding-right: 16px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-main { grid-row: auto; min-height: 220px; }
+  .hero-secondary { border-left: none; border-top: 1px solid var(--border2); }
+  .cat-grid { grid-template-columns: 1fr; }
+  .cat-grid-2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left">
+    <span class="nav-brand-name">Finary <em>One</em></span>
+    <span class="nav-brand-sub">Intelligence Hub</span>
+  </div>
+  <div class="nav-search">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="Rechercher un article, une source…"/>
+  </div>
+  <div class="nav-right">
+    <div class="nav-datetime" id="datetime"></div>
+  </div>
+</nav>
+
+<!-- BRIEFING BAR -->
+<div class="briefing-bar">
+  <div class="live-pill"><div class="live-dot"></div><span class="live-text">Live</span></div>
+  <div class="briefing-stats" id="briefingText">Chargement…</div>
+  <div class="briefing-time" id="briefingTime"></div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-bar" id="tabsBar">
+  <div class="tab active" data-cat="Tous">Tous</div>
+  <div class="tab" data-cat="Macro & Marchés">Macro & Marchés</div>
+  <div class="tab" data-cat="M&A France">M&A France</div>
+  <div class="tab" data-cat="Patrimoine & Fiscalité">Patrimoine & Fiscalité</div>
+  <div class="tab" data-cat="Private Equity">Private Equity</div>
+  <div class="tab" data-cat="Family Office">Family Office</div>
+  <div class="tab" data-cat="Réglementation">Réglementation</div>
+  <div class="tab" data-cat="Startups FR">Startups FR</div>
+</div>
+
+<!-- PAGE -->
+<div class="page" id="pageContent"></div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Finary <em>One</em> — Intelligence Hub</span>
+  <span class="footer-info" id="footerInfo">Auto-refresh · 30 min</span>
+</footer>
+
+<script>
+const SHEET_URL = 'YOUR_GOOGLE_SHEETS_CSV_URL';
+
+function ago(h) { return new Date(Date.now() - h * 3600000).toISOString(); }
+
+const MOCK = [
+  {category:'Macro & Marchés', title:'La BCE maintient ses taux face à une inflation core persistante', source:'Les Echos', url:'#', summary:'La Banque centrale européenne a décidé de maintenir ses taux directeurs inchangés lors de sa réunion de mai, invoquant une inflation core qui reste au-dessus de son objectif de 2%. Christine Lagarde a insisté sur la nécessité de rester vigilant avant tout assouplissement.', published_at:ago(2), tags:'BCE,taux,inflation'},
+  {category:'Macro & Marchés', title:'Le CAC 40 franchit un nouveau plus haut historique porté par le luxe', source:'Bloomberg', url:'#', summary:'Le CAC 40 a inscrit un nouveau record historique grâce aux valeurs du luxe — LVMH, Hermès et Kering progressent de plus de 3% en séance après des résultats trimestriels solides en Asie.', published_at:ago(5), tags:'CAC40,luxe,marchés'},
+  {category:'Macro & Marchés', title:'OAT 10 ans : le spread avec le Bund se resserre à 70 pb', source:'Reuters', url:'#', summary:'Le différentiel de taux entre les OAT françaises et les Bunds allemands revient sous son niveau de début d\'année, signalant une détente des tensions politiques françaises sur les marchés obligataires.', published_at:ago(9), tags:'OAT,taux,dette'},
+  {category:'M&A France', title:'Eurazeo cède sa participation dans Vitaprotech pour 1,2 Md€', source:'L\'Agefi', url:'#', summary:'Eurazeo finalise la cession de Vitaprotech, leader de la sécurité physique, à un consortium mené par Bridgepoint. La transaction, qui valorise la société à 1,2 milliard d\'euros, représente un multiple de 4x sur l\'investissement initial.', published_at:ago(1), tags:'M&A,cession,PE,Eurazeo'},
+  {category:'M&A France', title:'Bpifrance prend 15 % du capital d\'Exotec dans un tour à 335 M€', source:'Capital Finance', url:'#', summary:'La banque publique entre au capital du licorne lyonnais de robotique logistique dans le cadre d\'un tour de financement de 335M€ destiné à financer l\'expansion aux États-Unis.', published_at:ago(6), tags:'Bpifrance,startup,robotique'},
+  {category:'M&A France', title:'Cession d\'un cabinet d\'expertise comptable lyonnais (8 M€)', source:'CFNews', url:'#', summary:'Un cabinet régional de 45 collaborateurs est repris par un groupe national dans une opération valorisée à 8 millions d\'euros. Signal fort sur la consolidation du secteur des services professionnels en région.', published_at:ago(3), tags:'cession,PME,expertise,Lyon'},
+  {category:'Patrimoine & Fiscalité', title:'PLF 2027 : premières fuites sur la réforme de l\'assurance-vie', source:'Club Patrimoine', url:'#', summary:'Le gouvernement envisagerait de modifier le régime fiscal de l\'assurance-vie pour les contrats de plus de 150 000€, avec une taxation accrue des plus-values au-delà de 8 ans. Une réforme majeure à anticiper pour les clients patrimoniaux.', published_at:ago(3), tags:'assurance-vie,fiscalité,PLF'},
+  {category:'Patrimoine & Fiscalité', title:'CDHR prolongée — impact direct pour les clients à hauts revenus', source:'AMF', url:'#', summary:'La contribution différentielle sur les hauts revenus est prolongée jusqu\'au retour du déficit public sous 3% du PIB. Les foyers avec revenus >250k€ doivent anticiper leur déclaration dès maintenant.', published_at:ago(20), tags:'CDHR,fiscalité,hauts revenus'},
+  {category:'Patrimoine & Fiscalité', title:'Pacte Dutreil : nouvelle instruction fiscale publiée au BOFIP', source:'Légifrance', url:'#', summary:'L\'administration fiscale précise les conditions d\'application du Pacte Dutreil dans les opérations à effet de levier, apportant des clarifications très attendues par les praticiens de l\'ingénierie patrimoniale.', published_at:ago(22), tags:'Dutreil,fiscalité,LBO'},
+  {category:'Private Equity', title:'Ardian boucle son fonds secondaire record à 30 Md$', source:'PE International', url:'#', summary:'Ardian ASF IX atteint son hard cap à 30 milliards de dollars, devenant le plus grand fonds secondaire jamais levé. La demande des investisseurs institutionnels a largement dépassé l\'offre initiale.', published_at:ago(4), tags:'Ardian,secondaire,PE'},
+  {category:'Private Equity', title:'PAI Partners en discussions exclusives pour acquérir Froneri à 15 Md€', source:'Reuters', url:'#', summary:'Le fonds français serait en discussions exclusives pour l\'acquisition du fabricant de crèmes glacées Froneri, coentreprise entre Nestlé et R&R Ice Cream, dans un deal qui figurerait parmi les plus importants de l\'année.', published_at:ago(11), tags:'PAI,LBO,food'},
+  {category:'Private Equity', title:'Tikehau lance un fonds 500 M€ dédié à la défense européenne', source:'L\'Agefi', url:'#', summary:'Tikehau Capital annonce le lancement de T2 Energy Transition & Defence, ciblant les entreprises de la chaîne de valeur défense en Europe dans un contexte de réarmement généralisé.', published_at:ago(22), tags:'Tikehau,défense,fonds'},
+  {category:'Family Office', title:'Les family offices français doublent leur exposition au private credit', source:'Campden Wealth', url:'#', summary:'Selon le rapport annuel Campden-UBS, les family offices français ont porté leurs allocations en private credit de 4% à 9% en 2025, cherchant des rendements ajustés au risque supérieurs aux obligations souveraines.', published_at:ago(7), tags:'family office,private credit,allocation'},
+  {category:'Family Office', title:'La famille Mulliez restructure Creadev autour du climat', source:'Les Echos', url:'#', summary:'Le family office des fondateurs d\'Auchan annonce un pivot stratégique vers les investissements à impact climatique, avec un objectif d\'allocation de 40% du portefeuille d\'ici 2027.', published_at:ago(13), tags:'family office,impact,climat,Mulliez'},
+  {category:'Family Office', title:'Pinault renforce Artémis dans le sport business européen', source:'Bloomberg', url:'#', summary:'Artémis, holding de la famille Pinault, prend une participation minoritaire dans un club de football européen et renforce son exposition au secteur du sport après l\'acquisition des Rennes.', published_at:ago(26), tags:'Pinault,Artémis,sport'},
+  {category:'Réglementation', title:'AMF : nouvelle doctrine sur les fonds evergreen retail', source:'AMF', url:'#', summary:'L\'AMF publie sa position-recommandation sur la commercialisation des fonds evergreen auprès des clients non-professionnels, encadrant les conditions de liquidité et les obligations d\'information.', published_at:ago(5), tags:'AMF,evergreen,réglementation'},
+  {category:'Réglementation', title:'DORA : entrée en vigueur effective pour les sociétés de gestion', source:'ACPR', url:'#', summary:'Le règlement européen sur la résilience opérationnelle numérique est pleinement applicable depuis le 17 janvier. L\'ACPR publie ses premiers retours de contrôle sur la mise en conformité des acteurs.', published_at:ago(16), tags:'DORA,conformité,digital'},
+  {category:'Réglementation', title:'MiCA : l\'ESMA publie ses orientations finales sur les crypto-actifs', source:'ESMA', url:'#', summary:'L\'ESMA finalise son cadre d\'application de MiCA avec des précisions importantes sur la classification des stablecoins et les obligations déclaratives des CASPs opérant en Europe.', published_at:ago(26), tags:'MiCA,crypto,ESMA'},
+  {category:'Startups FR', title:'Mistral AI lève 600 M€ en Series C à 6 Md€ de valorisation', source:'TechCrunch', url:'#', summary:'La licorne française de l\'IA générative boucle un tour de table record porté par General Atlantic et des fonds souverains du Golfe. La valorisation triple en 18 mois, passant de 2 à 6 milliards d\'euros.', published_at:ago(2), tags:'Mistral,IA,licorne,Series C'},
+  {category:'Startups FR', title:'Alan dépasse les 700 000 assurés et vise la rentabilité 2026', source:'Maddyness', url:'#', summary:'La healthtech française annonce avoir dépassé le cap des 700 000 assurés en Europe et confirme son objectif de profitabilité opérationnelle pour l\'exercice 2026 après 7 ans de croissance.', published_at:ago(10), tags:'Alan,santé,rentabilité'},
+  {category:'Startups FR', title:'Pigment vise une IPO au Nasdaq fin 2026 valorisée à 2 Md€', source:'Sifted', url:'#', summary:'La scale-up spécialisée en planification financière pour grandes entreprises serait en discussion avec Goldman Sachs et Morgan Stanley en vue d\'une introduction en bourse aux États-Unis.', published_at:ago(26), tags:'Pigment,IPO,Nasdaq'},
+];
+
+let allData = [], activeTab = 'Tous', searchQuery = '', activeTag = '', lastUpdated = null;
+
+function timeAgo(d) {
+  const s = Math.floor((Date.now() - new Date(d)) / 1000);
+  if (s < 60) return 'à l\'instant';
+  if (s < 3600) return `${Math.floor(s/60)} min`;
+  if (s < 86400) return `${Math.floor(s/3600)} h`;
+  return `${Math.floor(s/86400)} j`;
+}
+
+function updateDatetime() {
+  const n = new Date();
+  const d = n.toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long'});
+  const t = n.toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
+  document.getElementById('datetime').innerHTML = `${d.charAt(0).toUpperCase()+d.slice(1)}<br>${t}`;
+}
+
+async function fetchData() {
+  if (!SHEET_URL || SHEET_URL === 'YOUR_GOOGLE_SHEETS_CSV_URL') {
+    allData = MOCK; lastUpdated = new Date(); render(); return;
+  }
+  try {
+    const r = await fetch(SHEET_URL);
+    const txt = await r.text();
+    const rows = txt.trim().split('\n');
+    const hdrs = rows[0].split(',').map(h => h.replace(/"/g,'').trim());
+    allData = rows.slice(1).map(row => {
+      const vals = row.match(/(".*?"|[^,]+)(?=\s*,|\s*$)/g) || [];
+      const o = {}; hdrs.forEach((h,i) => { o[h] = (vals[i]||'').replace(/"/g,'').trim(); });
+      return o;
+    }).filter(r => r.title);
+    lastUpdated = new Date(); render();
+  } catch(e) { allData = MOCK; lastUpdated = new Date(); render(); }
+}
+
+function getFiltered() {
+  return allData.filter(item => {
+    const mt = activeTab === 'Tous' || item.category === activeTab;
+    const q = searchQuery.toLowerCase();
+    const ms = !q || item.title.toLowerCase().includes(q) || item.source.toLowerCase().includes(q) || (item.tags||'').toLowerCase().includes(q);
+    const mg = !activeTag || (item.tags||'').toLowerCase().includes(activeTag.toLowerCase());
+    return mt && ms && mg;
+  });
+}
+
+function getAllTags() {
+  const tc = {};
+  allData.forEach(item => (item.tags||'').split(',').forEach(t => { const s=t.trim(); if(s) tc[s]=(tc[s]||0)+1; }));
+  return Object.entries(tc).sort((a,b)=>b[1]-a[1]).slice(0,22);
+}
+
+function groupBy(items) {
+  const g = {};
+  items.forEach(item => { if(!g[item.category]) g[item.category]=[]; g[item.category].push(item); });
+  return g;
+}
+
+function artHTML(item) {
+  return `<div class="art-item" onclick="this.classList.toggle('expanded')">
+    <div class="art-title">${item.title}</div>
+    <div class="art-meta">
+      <span class="art-source">${item.source}</span>
+      <span class="art-sep">·</span>
+      <span class="art-time">il y a ${timeAgo(item.published_at)}</span>
+    </div>
+    ${item.summary ? `<div class="art-summary">${item.summary}</div>` : ''}
+  </div>`;
+}
+
+function render() {
+  const filtered = getFiltered();
+  const page = document.getElementById('pageContent');
+
+  // Briefing
+  const fiscal = allData.filter(i=>i.category==='Patrimoine & Fiscalité').length;
+  const deals = allData.filter(i=>i.category==='M&A France').length;
+  document.getElementById('briefingText').innerHTML =
+    `<strong>${allData.length}</strong> articles · <strong>${fiscal}</strong> signaux fiscaux · <strong>${deals}</strong> deals M&A`;
+  const t = lastUpdated ? lastUpdated.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) : '—';
+  document.getElementById('briefingTime').textContent = `Mis à jour · ${t}`;
+  document.getElementById('footerInfo').textContent = `Dernière actualisation · ${t} · Auto-refresh 30 min`;
+
+  page.innerHTML = '';
+
+  if (!filtered.length) {
+    page.innerHTML = `<div class="no-results"><p>Aucun résultat pour <span>"${searchQuery||activeTag}"</span></p></div>`;
+    return;
+  }
+
+  // HERO SECTION — top 3 articles across all (or current category)
+  if (activeTab === 'Tous' && !searchQuery && !activeTag) {
+    const heroItems = [...filtered].sort((a,b) => new Date(b.published_at)-new Date(a.published_at)).slice(0,3);
+    const heroSection = document.createElement('div');
+    heroSection.className = 'hero-section';
+    heroSection.innerHTML = `
+      <div class="hero-label">À la une</div>
+      <div class="hero-grid" id="heroGrid">
+        <div class="hero-main" onclick="this.classList.toggle('expanded')">
+          <div class="hero-main-bg"></div>
+          <div class="hero-main-overlay"></div>
+          <div class="hero-main-content">
+            <span class="hero-cat-badge">${heroItems[0]?.category||''}</span>
+            <div class="hero-main-title">${heroItems[0]?.title||''}</div>
+            <div class="hero-main-meta">
+              <span class="hero-source">${heroItems[0]?.source||''}</span>
+              <span class="hero-time">il y a ${timeAgo(heroItems[0]?.published_at)}</span>
+            </div>
+            ${heroItems[0]?.summary ? `<div class="hero-summary-expanded">${heroItems[0].summary}</div>` : ''}
+          </div>
+        </div>
+        ${heroItems.slice(1,3).map(item => `
+          <div class="hero-secondary" onclick="this.classList.toggle('expanded')">
+            <div>
+              <div class="hero-sec-cat">${item.category}</div>
+              <div class="hero-sec-title">${item.title}</div>
+            </div>
+            <div>
+              <div class="hero-sec-meta">
+                <span class="hero-sec-source">${item.source}</span>
+                <span class="art-sep">·</span>
+                <span class="hero-sec-time">il y a ${timeAgo(item.published_at)}</span>
+              </div>
+              ${item.summary ? `<div class="hero-sec-summary">${item.summary}</div>` : ''}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    page.appendChild(heroSection);
+  }
+
+  // CATEGORIES
+  const catSection = document.createElement('div');
+  catSection.className = 'categories-section';
+
+  if (activeTab !== 'Tous') {
+    // Single category — full width list
+    const items = filtered;
+    catSection.innerHTML = `
+      <div class="cat-section-label">${activeTab}</div>
+      <div class="cat-grid" style="grid-template-columns:1fr;">
+        <div class="cat-card">
+          <div class="cat-card-header">
+            <span class="cat-card-title"><span class="cat-dot"></span>${activeTab}</span>
+            <span class="cat-count">${items.length} articles</span>
+          </div>
+          ${items.map(artHTML).join('')}
+        </div>
+      </div>
+    `;
+  } else {
+    const groups = groupBy(filtered);
+    const cats = Object.entries(groups);
+
+    // Label
+    const lbl = document.createElement('div');
+    lbl.className = 'cat-section-label';
+    lbl.textContent = 'Toutes les catégories';
+    catSection.appendChild(lbl);
+
+    // First row — 3 cols
+    const firstThree = cats.slice(0, 3);
+    const grid1 = document.createElement('div');
+    grid1.className = 'cat-grid';
+    firstThree.forEach(([cat, items]) => {
+      const div = document.createElement('div');
+      div.className = 'cat-card';
+      div.innerHTML = `
+        <div class="cat-card-header">
+          <span class="cat-card-title"><span class="cat-dot"></span>${cat}</span>
+          <span class="cat-count">${items.length}</span>
+        </div>
+        ${items.slice(0,3).map(artHTML).join('')}
+      `;
+      grid1.appendChild(div);
+    });
+    catSection.appendChild(grid1);
+
+    // Second row — 3 cols
+    const nextThree = cats.slice(3, 6);
+    if (nextThree.length) {
+      const grid2 = document.createElement('div');
+      grid2.className = 'cat-grid';
+      grid2.style.marginTop = '1px';
+      nextThree.forEach(([cat, items]) => {
+        const div = document.createElement('div');
+        div.className = 'cat-card';
+        div.innerHTML = `
+          <div class="cat-card-header">
+            <span class="cat-card-title"><span class="cat-dot"></span>${cat}</span>
+            <span class="cat-count">${items.length}</span>
+          </div>
+          ${items.slice(0,3).map(artHTML).join('')}
+        `;
+        grid2.appendChild(div);
+      });
+      catSection.appendChild(grid2);
+    }
+
+    // Third row — 2 cols
+    const lastTwo = cats.slice(6, 8);
+    if (lastTwo.length) {
+      const grid3 = document.createElement('div');
+      grid3.className = 'cat-grid-2';
+      lastTwo.forEach(([cat, items]) => {
+        const div = document.createElement('div');
+        div.className = 'cat-card';
+        div.innerHTML = `
+          <div class="cat-card-header">
+            <span class="cat-card-title"><span class="cat-dot"></span>${cat}</span>
+            <span class="cat-count">${items.length}</span>
+          </div>
+          ${items.slice(0,3).map(artHTML).join('')}
+        `;
+        grid3.appendChild(div);
+      });
+      catSection.appendChild(grid3);
+    }
+  }
+
+  page.appendChild(catSection);
+
+  // THEMES
+  if (activeTab === 'Tous') {
+    const tags = getAllTags();
+    const tw = document.createElement('div');
+    tw.className = 'themes-card';
+    tw.innerHTML = `
+      <div class="themes-title-bar"><span class="themes-heading">Thèmes du moment</span></div>
+      <div class="themes-list">
+        ${tags.map(([tag,count]) => `<span class="theme-tag ${activeTag===tag?'active':''}" onclick="filterTag('${tag}')">${tag}<span class="tag-n">${count}</span></span>`).join('')}
+      </div>
+    `;
+    page.appendChild(tw);
+  }
+}
+
+function filterTag(tag) { activeTag = activeTag === tag ? '' : tag; render(); }
+
+document.getElementById('tabsBar').addEventListener('click', e => {
+  const t = e.target.closest('.tab');
+  if (!t) return;
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  activeTab = t.dataset.cat; activeTag = ''; render();
+});
+
+let st;
+document.getElementById('searchInput').addEventListener('input', e => {
+  clearTimeout(st); st = setTimeout(() => { searchQuery = e.target.value; render(); }, 220);
+});
+
+updateDatetime();
+setInterval(updateDatetime, 30000);
+setInterval(fetchData, 30 * 60 * 1000);
+fetchData();
+</script>
+</body>
+</html>
