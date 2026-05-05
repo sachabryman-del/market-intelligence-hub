@@ -17,7 +17,6 @@
   --gold-light: #e4c48a;
   --navy: #0e1535;
   --navy2: #1a2448;
-  --tpe-bg: #f0ede6;
   --tpe-accent: #7a5c3a;
   --tpe-accent-light: #c4956a;
   --text: #1a1508;
@@ -35,120 +34,70 @@
  
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
- 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-}
+body { background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; min-height: 100vh; }
  
 /* ─── NAVBAR ─── */
 .navbar {
   position: sticky; top: 0; z-index: 200;
-  background: rgba(245,241,234,0.94);
-  backdrop-filter: blur(20px);
+  background: rgba(245,241,234,0.94); backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border2);
   box-shadow: 0 1px 12px rgba(30,20,5,0.06);
   padding: 0 40px; height: 58px;
   display: flex; align-items: center; justify-content: space-between; gap: 32px;
 }
-.nav-left { display: flex; align-items: baseline; gap: 10px; }
+.nav-left { display: flex; align-items: baseline; gap: 10px; cursor: pointer; }
 .nav-brand-name { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.02em; line-height: 1; }
 .nav-brand-name em { color: var(--gold); font-style: italic; }
 .nav-brand-sub { font-size: 10px; font-weight: 400; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; }
 .nav-search { flex: 1; max-width: 380px; position: relative; }
-.nav-search input {
-  width: 100%; background: rgba(255,255,255,0.8);
-  border: 1px solid var(--border2); color: var(--text);
-  font-family: var(--sans); font-size: 13px;
-  padding: 8px 14px 8px 34px; outline: none; border-radius: 100px;
-  box-shadow: var(--shadow-sm);
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
+.nav-search input { width: 100%; background: rgba(255,255,255,0.8); border: 1px solid var(--border2); color: var(--text); font-family: var(--sans); font-size: 13px; padding: 8px 14px 8px 34px; outline: none; border-radius: 100px; box-shadow: var(--shadow-sm); transition: border-color 0.15s, box-shadow 0.15s; }
 .nav-search input::placeholder { color: var(--text3); }
 .nav-search input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,110,0.18); }
 .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 13px; pointer-events: none; }
 .nav-datetime { font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 0.04em; text-align: right; line-height: 1.5; flex-shrink: 0; }
  
 /* ─── BRIEFING BAR ─── */
-.briefing-bar {
-  background: var(--navy);
-  padding: 9px 40px;
-  display: flex; align-items: center; gap: 12px;
-}
+.briefing-bar { background: var(--navy); padding: 9px 40px; display: flex; align-items: center; gap: 12px; }
 .live-pill { display: flex; align-items: center; gap: 5px; background: rgba(201,169,110,0.2); border: 1px solid rgba(201,169,110,0.35); padding: 2px 10px; border-radius: 100px; flex-shrink: 0; }
 .live-dot { width: 5px; height: 5px; background: var(--gold-light); border-radius: 50%; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
 .live-text { font-size: 9px; font-weight: 500; color: var(--gold-light); letter-spacing: 0.1em; text-transform: uppercase; }
 .briefing-stats { font-size: 12px; color: rgba(255,255,255,0.55); }
 .briefing-stats strong { color: var(--gold-light); font-weight: 500; }
 .briefing-time { margin-left: auto; font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.3); }
  
 /* ─── TABS ─── */
-.tabs-bar {
-  background: var(--cream2);
-  border-bottom: 1px solid var(--border2);
-  padding: 0 40px;
-  display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
-}
+.tabs-bar { background: var(--cream2); border-bottom: 1px solid var(--border2); padding: 0 40px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
 .tabs-bar::-webkit-scrollbar { display: none; }
 .tab { padding: 12px 20px; font-size: 12px; font-weight: 400; color: var(--text3); letter-spacing: 0.04em; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; user-select: none; }
 .tab:hover { color: var(--text2); }
 .tab.active { color: var(--gold-dark); font-weight: 500; border-bottom-color: var(--gold); }
-.tab-new { font-size: 8px; font-weight: 600; color: var(--gold-dark); background: rgba(201,169,110,0.18); padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle; letter-spacing: 0.06em; }
+.tab-new { font-size: 8px; font-weight: 600; color: var(--gold-dark); background: rgba(201,169,110,0.18); padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle; }
  
-/* ─── PAGE ─── */
-.page { padding: 36px 40px 64px; }
+/* ─── PAGES ─── */
+.page { display: none; }
+.page.active { display: block; }
  
-/* ─── SECTION LABELS ─── */
-.section-label {
-  font-size: 10px; font-weight: 600; color: var(--gold-dark);
-  letter-spacing: 0.14em; text-transform: uppercase;
-  margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
-}
-.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
+/* ─── HOME PAGE ─── */
+#homePage { padding: 36px 40px 64px; }
  
-/* ─── HERO ─── */
+.section-label { font-size: 10px; font-weight: 600; color: var(--gold-dark); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.section-label::after { content:''; flex:1; height:1px; background:var(--border2); }
+ 
+/* hero */
 .hero-section { margin-bottom: 44px; }
-.hero-grid {
-  display: grid; grid-template-columns: 1.65fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 12px;
-}
-.hero-main {
-  grid-row: 1 / 3;
-  background: var(--navy2);
-  border-radius: 16px;
-  padding: 32px 28px;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  min-height: 300px; position: relative; cursor: pointer;
-  box-shadow: var(--shadow-lg);
-  transition: transform 0.2s, box-shadow 0.2s;
-  overflow: hidden;
-}
+.hero-grid { display: grid; grid-template-columns: 1.65fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
+.hero-main { grid-row: 1/3; background: var(--navy2); border-radius: 16px; padding: 32px 28px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 300px; position: relative; cursor: pointer; box-shadow: var(--shadow-lg); transition: transform 0.2s, box-shadow 0.2s; overflow: hidden; }
 .hero-main:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,20,5,0.18); }
-.hero-main-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0e1535 0%, #1a2448 45%, #2a1f5e 100%); }
-.hero-main-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,21,53,0.97) 25%, rgba(14,21,53,0.3) 100%); }
+.hero-main-bg { position: absolute; inset: 0; background: linear-gradient(135deg,#0e1535 0%,#1a2448 45%,#2a1f5e 100%); }
+.hero-main-overlay { position: absolute; inset: 0; background: linear-gradient(to top,rgba(14,21,53,0.97) 25%,rgba(14,21,53,0.3) 100%); }
 .hero-main-content { position: relative; z-index: 1; }
 .hero-cat-badge { display: inline-block; font-size: 9px; font-weight: 500; color: var(--gold-light); background: rgba(201,169,110,0.18); border: 1px solid rgba(201,169,110,0.3); padding: 3px 10px; border-radius: 100px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
 .hero-main-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 10px; }
 .hero-main-meta { display: flex; align-items: center; gap: 8px; }
 .hero-source { font-size: 11px; color: var(--gold-light); font-weight: 500; }
 .hero-time { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.35); }
-.hero-summary-expanded { display: none; margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
-.hero-main.expanded .hero-summary-expanded { display: block; }
- 
-.hero-secondary {
-  background: var(--white);
-  border-radius: 12px; padding: 18px 20px;
-  display: flex; flex-direction: column; justify-content: space-between;
-  cursor: pointer; min-height: 130px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
+.hero-secondary { background: var(--white); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; min-height: 130px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); transition: transform 0.15s, box-shadow 0.15s; }
 .hero-secondary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .hero-sec-cat { font-size: 9px; font-weight: 600; color: var(--gold-dark); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 7px; }
 .hero-sec-title { font-family: var(--serif); font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.4; flex: 1; margin-bottom: 10px; }
@@ -156,107 +105,63 @@ body {
 .hero-sec-meta { display: flex; align-items: center; gap: 6px; }
 .hero-sec-source { font-size: 11px; color: var(--gold-dark); font-weight: 500; }
 .hero-sec-time { font-family: var(--mono); font-size: 10px; color: var(--text3); }
-.hero-sec-summary { display: none; margin-top: 8px; font-size: 12px; color: var(--text2); line-height: 1.6; border-top: 1px solid var(--border); padding-top: 8px; }
-.hero-secondary.expanded .hero-sec-summary { display: block; }
  
-/* ─── CAT GRIDS ─── */
+/* cat grids */
 .cat-grid-wrap { margin-bottom: 44px; }
 .cat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
 .cat-grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 12px; }
- 
-.cat-card {
-  background: var(--white);
-  border-radius: 14px; padding: 20px 22px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
+.cat-card { background: var(--white); border-radius: 14px; padding: 20px 22px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); transition: transform 0.15s, box-shadow 0.15s; }
 .cat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
- 
 .cat-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
 .cat-card-title { font-size: 10px; font-weight: 600; color: var(--gold-dark); letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
 .cat-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 .cat-count { font-family: var(--mono); font-size: 10px; color: var(--text3); background: rgba(201,169,110,0.1); padding: 2px 7px; border-radius: 20px; }
  
-.art-item { padding: 9px 0; border-bottom: 1px solid rgba(90,70,30,0.06); cursor: pointer; }
+/* article list items */
+.art-item { padding: 9px 0; border-bottom: 1px solid rgba(90,70,30,0.06); }
 .art-item:last-child { border-bottom: none; padding-bottom: 0; }
 .art-item:first-child { padding-top: 0; }
-.art-title { font-size: 13px; font-weight: 400; color: var(--text); line-height: 1.5; margin-bottom: 4px; transition: color 0.15s; }
-.art-item:hover .art-title { color: var(--navy); }
+.art-title-link { font-size: 13px; font-weight: 400; color: var(--text); line-height: 1.5; margin-bottom: 4px; cursor: pointer; transition: color 0.15s; display: block; }
+.art-title-link:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--gold); }
 .art-meta { display: flex; align-items: center; gap: 6px; }
 .art-source { font-size: 11px; font-weight: 500; color: var(--gold-dark); }
 .art-sep { font-size: 10px; color: var(--border2); }
 .art-time { font-family: var(--mono); font-size: 10px; color: var(--text3); }
-.art-summary { display: none; margin-top: 8px; padding: 9px 12px; background: rgba(201,169,110,0.07); border-left: 2px solid var(--gold); border-radius: 0 6px 6px 0; font-size: 12px; color: var(--text2); line-height: 1.65; }
-.art-item.expanded .art-summary { display: block; }
+.art-summary-inline { margin-top: 7px; padding: 8px 12px; background: rgba(201,169,110,0.07); border-left: 2px solid var(--gold); border-radius: 0 6px 6px 0; font-size: 12px; color: var(--text2); line-height: 1.65; }
  
-/* ─── TPE/PME/ETI SECTION ─── */
+/* TPE section */
 .tpe-section { margin-bottom: 44px; }
- 
-.tpe-banner {
-  background: linear-gradient(135deg, #2c1f0e 0%, #3d2c14 50%, #2c1f0e 100%);
-  border-radius: 16px 16px 0 0;
-  padding: 18px 28px;
-  display: flex; align-items: center; justify-content: space-between;
-  box-shadow: 0 -2px 0 rgba(201,169,110,0.3) inset;
-}
+.tpe-banner { background: linear-gradient(135deg,#2c1f0e 0%,#3d2c14 50%,#2c1f0e 100%); border-radius: 16px 16px 0 0; padding: 18px 28px; display: flex; align-items: center; justify-content: space-between; }
 .tpe-banner-left { display: flex; align-items: center; gap: 14px; }
-.tpe-banner-icon {
-  width: 36px; height: 36px; border-radius: 10px;
-  background: rgba(201,169,110,0.2); border: 1px solid rgba(201,169,110,0.35);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; flex-shrink: 0;
-}
-.tpe-banner-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
-.tpe-banner-sub { font-size: 11px; color: rgba(201,169,110,0.7); margin-top: 1px; letter-spacing: 0.03em; }
+.tpe-banner-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(201,169,110,0.2); border: 1px solid rgba(201,169,110,0.35); display: flex; align-items: center; justify-content: center; font-size: 16px; }
+.tpe-banner-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: #fff; }
+.tpe-banner-sub { font-size: 11px; color: rgba(201,169,110,0.7); margin-top: 1px; }
 .tpe-banner-stats { display: flex; gap: 24px; }
-.tpe-stat { text-align: center; }
 .tpe-stat-n { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--gold-light); line-height: 1; }
 .tpe-stat-l { font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
- 
-.tpe-grid-wrap {
-  background: var(--tpe-bg);
-  border: 1px solid rgba(160,120,64,0.2);
-  border-top: none;
-  border-radius: 0 0 16px 16px;
-  padding: 20px;
-  box-shadow: var(--shadow-md);
-}
-.tpe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
- 
-.tpe-card {
-  background: var(--white);
-  border-radius: 12px; padding: 16px 18px;
-  border: 1px solid rgba(160,120,64,0.18);
-  box-shadow: 0 2px 10px rgba(60,35,5,0.08), 0 0 0 1px rgba(160,120,64,0.08);
-  transition: transform 0.15s, box-shadow 0.15s;
-  cursor: pointer;
-}
+.tpe-grid-wrap { background: #f0ede6; border: 1px solid rgba(160,120,64,0.2); border-top: none; border-radius: 0 0 16px 16px; padding: 20px; box-shadow: var(--shadow-md); }
+.tpe-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.tpe-card { background: var(--white); border-radius: 12px; padding: 16px 18px; border: 1px solid rgba(160,120,64,0.18); box-shadow: 0 2px 10px rgba(60,35,5,0.08); transition: transform 0.15s, box-shadow 0.15s; }
 .tpe-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(60,35,5,0.13); }
- 
 .tpe-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding-bottom: 9px; border-bottom: 1px solid rgba(160,120,64,0.12); }
 .tpe-card-title { font-size: 10px; font-weight: 600; color: var(--tpe-accent); letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
-.tpe-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--tpe-accent-light); flex-shrink: 0; }
+.tpe-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--tpe-accent-light); }
 .tpe-badge { font-size: 9px; color: var(--tpe-accent); background: rgba(122,92,58,0.1); border: 1px solid rgba(122,92,58,0.2); padding: 2px 7px; border-radius: 20px; font-family: var(--mono); }
- 
-.tpe-item { padding: 9px 0; border-bottom: 1px solid rgba(122,92,58,0.07); cursor: pointer; }
+.tpe-item { padding: 9px 0; border-bottom: 1px solid rgba(122,92,58,0.07); }
 .tpe-item:last-child { border-bottom: none; padding-bottom: 0; }
 .tpe-item:first-child { padding-top: 0; }
-.tpe-item-title { font-size: 13px; font-weight: 400; color: var(--text); line-height: 1.5; margin-bottom: 5px; transition: color 0.15s; }
-.tpe-item:hover .tpe-item-title { color: var(--tpe-accent); }
+.tpe-title-link { font-size: 13px; font-weight: 400; color: var(--text); line-height: 1.5; margin-bottom: 5px; cursor: pointer; transition: color 0.15s; display: block; }
+.tpe-title-link:hover { color: var(--tpe-accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--tpe-accent-light); }
 .tpe-item-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .tpe-source { font-size: 11px; font-weight: 500; color: var(--tpe-accent-light); }
-.tpe-size-tag { font-size: 9px; color: var(--tpe-accent); background: rgba(122,92,58,0.08); border: 1px solid rgba(122,92,58,0.15); padding: 1px 6px; border-radius: 3px; letter-spacing: 0.04em; }
+.tpe-size-tag { font-size: 9px; padding: 1px 6px; border-radius: 3px; letter-spacing: 0.04em; border: 1px solid; }
 .tpe-time { font-family: var(--mono); font-size: 10px; color: var(--text3); }
-.tpe-summary { display: none; margin-top: 8px; padding: 9px 12px; background: rgba(122,92,58,0.06); border-left: 2px solid var(--tpe-accent-light); border-radius: 0 6px 6px 0; font-size: 12px; color: var(--text2); line-height: 1.65; }
-.tpe-item.expanded .tpe-summary { display: block; }
- 
 .tpe-sources-bar { margin-top: 10px; padding: 10px 0 0; border-top: 1px solid rgba(160,120,64,0.15); display: flex; align-items: center; gap: 8px; }
-.tpe-sources-label { font-size: 10px; color: var(--text3); letter-spacing: 0.05em; }
-.tpe-source-link { font-size: 11px; color: var(--tpe-accent); text-decoration: none; padding: 3px 10px; border: 1px solid rgba(122,92,58,0.2); border-radius: 20px; transition: all 0.15s; background: rgba(122,92,58,0.04); }
+.tpe-sources-label { font-size: 10px; color: var(--text3); }
+.tpe-source-link { font-size: 11px; color: var(--tpe-accent); text-decoration: none; padding: 3px 10px; border: 1px solid rgba(122,92,58,0.2); border-radius: 20px; transition: all 0.15s; }
 .tpe-source-link:hover { background: rgba(122,92,58,0.1); border-color: rgba(122,92,58,0.35); }
  
-/* ─── THEMES ─── */
+/* themes */
 .themes-card { background: var(--navy); border-radius: 16px; padding: 22px 24px; box-shadow: var(--shadow-lg); }
 .themes-heading { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
 .themes-list { display: flex; flex-wrap: wrap; gap: 7px; }
@@ -265,30 +170,106 @@ body {
 .theme-tag.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 500; }
 .tag-n { font-size: 9px; opacity: 0.5; margin-left: 2px; }
  
-.no-results { padding: 60px; text-align: center; }
-.no-results p { font-size: 14px; color: var(--text3); }
-.no-results span { color: var(--gold-dark); font-style: italic; font-family: var(--serif); }
+/* ─── ARTICLE PAGE ─── */
+#articlePage { padding: 0 0 64px; }
  
-/* ─── FOOTER ─── */
+.article-hero {
+  background: var(--navy);
+  padding: 48px 40px 56px;
+  position: relative; overflow: hidden;
+}
+.article-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg,#0e1535 0%,#1a2448 50%,#2a1f5e 100%); }
+.article-hero-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(201,169,110,0.06) 0%, transparent 60%); }
+.article-hero-content { position: relative; z-index: 1; max-width: 780px; }
+.article-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.45); cursor: pointer; margin-bottom: 20px; transition: color 0.15s; letter-spacing: 0.03em; border: none; background: none; padding: 0; }
+.article-back:hover { color: var(--gold-light); }
+.article-back-arrow { font-size: 14px; }
+.article-badge { display: inline-block; font-size: 9px; font-weight: 600; color: var(--gold-light); background: rgba(201,169,110,0.18); border: 1px solid rgba(201,169,110,0.3); padding: 4px 12px; border-radius: 100px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+.article-hero-title { font-family: var(--serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 20px; }
+.article-hero-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta-source { font-size: 13px; color: var(--gold-light); font-weight: 500; }
+.article-meta-time { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.35); }
+.article-meta-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.article-tag { font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); padding: 2px 9px; border-radius: 100px; }
+ 
+.article-body { max-width: 780px; margin: 0 auto; padding: 40px 40px 0; }
+ 
+/* summary box */
+.article-summary-box {
+  background: var(--white); border-radius: 16px; padding: 28px 32px;
+  box-shadow: var(--shadow-md); border: 1px solid var(--border);
+  margin-bottom: 32px; position: relative;
+}
+.article-summary-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--gold), var(--gold-light)); border-radius: 4px 0 0 4px; }
+.summary-label { font-size: 9px; font-weight: 600; color: var(--gold-dark); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; }
+.summary-text { font-size: 15px; color: var(--text); line-height: 1.75; font-weight: 400; }
+ 
+/* analysis */
+.article-analysis { margin-bottom: 32px; }
+.analysis-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border2); }
+ 
+.analysis-block { margin-bottom: 20px; }
+.analysis-block-label { font-size: 10px; font-weight: 600; color: var(--gold-dark); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
+.analysis-block-label::before { content: ''; width: 3px; height: 12px; background: var(--gold); border-radius: 2px; flex-shrink: 0; }
+.analysis-block-text { font-size: 14px; color: var(--text2); line-height: 1.75; }
+ 
+/* key figures */
+.key-figures { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 28px; }
+.key-figure { background: var(--white); border-radius: 12px; padding: 16px 18px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: center; }
+.key-figure-value { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+.key-figure-label { font-size: 11px; color: var(--text3); line-height: 1.4; }
+ 
+/* signal box */
+.signal-box { background: linear-gradient(135deg, rgba(14,21,53,0.04), rgba(14,21,53,0.08)); border: 1px solid rgba(14,21,53,0.15); border-radius: 12px; padding: 20px 24px; margin-bottom: 28px; }
+.signal-box-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.signal-icon { width: 28px; height: 28px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.signal-title { font-size: 12px; font-weight: 600; color: var(--navy); letter-spacing: 0.04em; }
+.signal-text { font-size: 13px; color: var(--text2); line-height: 1.7; }
+ 
+/* CTA source */
+.article-cta { background: var(--cream2); border-radius: 14px; padding: 22px 28px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border2); box-shadow: var(--shadow-sm); margin-bottom: 32px; }
+.article-cta-left { }
+.article-cta-label { font-size: 10px; font-weight: 600; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+.article-cta-source { font-size: 14px; font-weight: 500; color: var(--text); }
+.article-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 10px 22px; border-radius: 100px; border: none; cursor: pointer; text-decoration: none; transition: background 0.15s, transform 0.15s; white-space: nowrap; }
+.article-cta-btn:hover { background: var(--navy2); transform: translateY(-1px); }
+.article-cta-btn-arrow { font-size: 14px; }
+ 
+/* related */
+.related-section { }
+.related-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 14px; }
+.related-card { background: var(--white); border-radius: 12px; padding: 16px 18px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+.related-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.related-cat { font-size: 9px; font-weight: 600; color: var(--gold-dark); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 7px; }
+.related-title { font-family: var(--serif); font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.4; margin-bottom: 8px; }
+.related-card:hover .related-title { color: var(--navy); }
+.related-meta { font-size: 11px; color: var(--gold-dark); }
+ 
+/* footer */
 footer { background: var(--navy); padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; }
 .footer-brand { font-family: var(--serif); font-size: 14px; color: rgba(255,255,255,0.35); }
 .footer-brand em { color: var(--gold); font-style: italic; }
 .footer-info { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.22); letter-spacing: 0.04em; }
  
-@media (max-width: 900px) {
-  .navbar, .briefing-bar, .tabs-bar, .page { padding-left: 16px; padding-right: 16px; }
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-main { grid-row: auto; min-height: 220px; }
-  .cat-grid, .tpe-grid { grid-template-columns: 1fr; }
-  .cat-grid-2 { grid-template-columns: 1fr; }
-  .tpe-banner { flex-direction: column; gap: 14px; align-items: flex-start; }
+.no-results { padding: 60px; text-align: center; }
+.no-results p { font-size: 14px; color: var(--text3); }
+ 
+@media(max-width:900px){
+  .navbar,.briefing-bar,.tabs-bar,#homePage,.article-body { padding-left:16px; padding-right:16px; }
+  .article-hero { padding: 32px 16px 40px; }
+  .hero-grid { grid-template-columns:1fr; }
+  .hero-main { grid-row:auto; min-height:220px; }
+  .cat-grid,.tpe-grid,.key-figures,.related-grid { grid-template-columns:1fr; }
+  .cat-grid-2 { grid-template-columns:1fr; }
+  .tpe-banner { flex-direction:column; gap:14px; align-items:flex-start; }
+  .article-cta { flex-direction:column; gap:14px; align-items:flex-start; }
 }
 </style>
 </head>
 <body>
  
 <nav class="navbar">
-  <div class="nav-left">
+  <div class="nav-left" onclick="goHome()">
     <span class="nav-brand-name">Finary <em>One</em></span>
     <span class="nav-brand-sub">Intelligence Hub</span>
   </div>
@@ -299,7 +280,7 @@ footer { background: var(--navy); padding: 16px 40px; display: flex; align-items
   <div class="nav-datetime" id="datetime"></div>
 </nav>
  
-<div class="briefing-bar">
+<div class="briefing-bar" id="briefingBar">
   <div class="live-pill"><div class="live-dot"></div><span class="live-text">Live</span></div>
   <div class="briefing-stats" id="briefingText">Chargement…</div>
   <div class="briefing-time" id="briefingTime"></div>
@@ -317,7 +298,11 @@ footer { background: var(--navy); padding: 16px 40px; display: flex; align-items
   <div class="tab" data-cat="Cessions TPE/PME/ETI">Cessions TPE/PME/ETI <span class="tab-new">NEW</span></div>
 </div>
  
-<div class="page" id="pageContent"></div>
+<!-- HOME PAGE -->
+<div id="homePage" class="page active"></div>
+ 
+<!-- ARTICLE PAGE -->
+<div id="articlePage" class="page"></div>
  
 <footer>
   <span class="footer-brand">Finary <em>One</em> — Intelligence Hub</span>
@@ -326,141 +311,247 @@ footer { background: var(--navy); padding: 16px 40px; display: flex; align-items
  
 <script>
 const SHEET_URL = 'YOUR_GOOGLE_SHEETS_CSV_URL';
-function ago(h) { return new Date(Date.now() - h*3600000).toISOString(); }
+function ago(h){return new Date(Date.now()-h*3600000).toISOString();}
  
-const MOCK = [
-  {category:'Macro & Marchés',title:'La BCE maintient ses taux face à une inflation core persistante',source:'Les Echos',url:'#',summary:'La Banque centrale européenne maintient ses taux directeurs inchangés lors de sa réunion de mai, invoquant une inflation core qui reste au-dessus de son objectif de 2%.',published_at:ago(2),tags:'BCE,taux,inflation'},
-  {category:'Macro & Marchés',title:'Le CAC 40 franchit un nouveau plus haut historique porté par le luxe',source:'Bloomberg',url:'#',summary:'Le CAC 40 inscrit un nouveau record historique grâce aux valeurs du luxe — LVMH, Hermès et Kering progressent de plus de 3% en séance.',published_at:ago(5),tags:'CAC40,luxe,marchés'},
-  {category:'Macro & Marchés',title:'OAT 10 ans : le spread avec le Bund se resserre à 70 pb',source:'Reuters',url:'#',summary:'Le différentiel de taux entre les OAT françaises et les Bunds allemands revient sous son niveau de début d\'année.',published_at:ago(9),tags:'OAT,taux,dette'},
-  {category:'M&A France',title:'Eurazeo cède sa participation dans Vitaprotech pour 1,2 Md€',source:'L\'Agefi',url:'#',summary:'Eurazeo finalise la cession de Vitaprotech à un consortium mené par Bridgepoint. Transaction valorisée à 1,2 Md€, multiple de 4x sur l\'investissement initial.',published_at:ago(1),tags:'M&A,cession,PE,Eurazeo'},
-  {category:'M&A France',title:'Bpifrance prend 15 % du capital d\'Exotec dans un tour à 335 M€',source:'Capital Finance',url:'#',summary:'La banque publique entre au capital du licorne lyonnais de robotique logistique pour financer l\'expansion aux États-Unis.',published_at:ago(6),tags:'Bpifrance,startup,robotique'},
-  {category:'M&A France',title:'TotalEnergies acquiert un portefeuille solaire de 2 GW à Engie',source:'Les Echos',url:'#',summary:'L\'opération, valorisée autour de 900M€, renforce la position de TotalEnergies dans les énergies renouvelables en Europe du Sud.',published_at:ago(14),tags:'M&A,énergie,solaire'},
-  {category:'Patrimoine & Fiscalité',title:'PLF 2027 : premières fuites sur la réforme de l\'assurance-vie',source:'Club Patrimoine',url:'#',summary:'Le gouvernement envisage de modifier le régime fiscal de l\'assurance-vie pour les contrats >150k€, avec une taxation accrue des plus-values au-delà de 8 ans.',published_at:ago(3),tags:'assurance-vie,fiscalité,PLF'},
-  {category:'Patrimoine & Fiscalité',title:'CDHR prolongée — impact direct pour les clients à hauts revenus',source:'AMF',url:'#',summary:'La contribution différentielle sur les hauts revenus est prolongée jusqu\'au retour du déficit public sous 3% du PIB.',published_at:ago(20),tags:'CDHR,fiscalité,hauts revenus'},
-  {category:'Patrimoine & Fiscalité',title:'Pacte Dutreil : nouvelle instruction fiscale publiée au BOFIP',source:'Légifrance',url:'#',summary:'L\'administration fiscale précise les conditions d\'application du Pacte Dutreil dans les opérations à effet de levier.',published_at:ago(22),tags:'Dutreil,fiscalité,LBO'},
-  {category:'Private Equity',title:'Ardian boucle son fonds secondaire record à 30 Md$',source:'PE International',url:'#',summary:'Ardian ASF IX atteint son hard cap à 30 milliards de dollars, devenant le plus grand fonds secondaire jamais levé.',published_at:ago(4),tags:'Ardian,secondaire,PE'},
-  {category:'Private Equity',title:'PAI Partners en discussions exclusives pour acquérir Froneri à 15 Md€',source:'Reuters',url:'#',summary:'Le fonds français en discussions pour l\'acquisition du fabricant de crèmes glacées Froneri.',published_at:ago(11),tags:'PAI,LBO,food'},
-  {category:'Private Equity',title:'Tikehau lance un fonds 500 M€ dédié à la défense européenne',source:'L\'Agefi',url:'#',summary:'Tikehau Capital lance T2 Energy Transition & Defence, ciblant la chaîne de valeur défense en Europe.',published_at:ago(22),tags:'Tikehau,défense,fonds'},
-  {category:'Family Office',title:'Les family offices français doublent leur exposition au private credit',source:'Campden Wealth',url:'#',summary:'Les family offices français portent leurs allocations en private credit de 4% à 9% en 2025.',published_at:ago(7),tags:'family office,private credit,allocation'},
-  {category:'Family Office',title:'La famille Mulliez restructure Creadev autour du climat',source:'Les Echos',url:'#',summary:'Pivot stratégique vers les investissements à impact climatique, objectif 40% du portefeuille d\'ici 2027.',published_at:ago(13),tags:'family office,impact,climat,Mulliez'},
-  {category:'Family Office',title:'Pinault renforce Artémis dans le sport business européen',source:'Bloomberg',url:'#',summary:'Artémis prend une participation minoritaire dans un club européen et renforce son exposition au sport.',published_at:ago(26),tags:'Pinault,Artémis,sport'},
-  {category:'Réglementation',title:'AMF : nouvelle doctrine sur les fonds evergreen retail',source:'AMF',url:'#',summary:'L\'AMF publie sa position sur la commercialisation des fonds evergreen auprès des clients non-professionnels.',published_at:ago(5),tags:'AMF,evergreen,réglementation'},
-  {category:'Réglementation',title:'DORA : entrée en vigueur effective pour les sociétés de gestion',source:'ACPR',url:'#',summary:'Le règlement européen sur la résilience opérationnelle numérique est pleinement applicable.',published_at:ago(16),tags:'DORA,conformité,digital'},
-  {category:'Réglementation',title:'MiCA : l\'ESMA publie ses orientations finales sur les crypto-actifs',source:'ESMA',url:'#',summary:'L\'ESMA finalise son cadre MiCA avec des précisions sur la classification des stablecoins.',published_at:ago(26),tags:'MiCA,crypto,ESMA'},
-  {category:'Startups FR',title:'Mistral AI lève 600 M€ en Series C à 6 Md€ de valorisation',source:'TechCrunch',url:'#',summary:'La licorne française de l\'IA générative boucle un tour record porté par General Atlantic.',published_at:ago(2),tags:'Mistral,IA,licorne,Series C'},
-  {category:'Startups FR',title:'Alan dépasse les 700 000 assurés et vise la rentabilité 2026',source:'Maddyness',url:'#',summary:'La healthtech confirme son objectif de profitabilité opérationnelle pour 2026.',published_at:ago(10),tags:'Alan,santé,rentabilité'},
-  {category:'Startups FR',title:'Pigment vise une IPO au Nasdaq fin 2026 valorisée à 2 Md€',source:'Sifted',url:'#',summary:'La scale-up FP&A en discussion avec Goldman Sachs et Morgan Stanley pour une cotation aux États-Unis.',published_at:ago(26),tags:'Pigment,IPO,Nasdaq'},
-  {category:'Cessions TPE/PME/ETI',title:'Cession d\'une boulangerie-pâtisserie artisanale en Île-de-France (CA 480k€)',source:'Fusacq',url:'https://www.fusacq.com/buzz/fr',summary:'Dirigeant partant à la retraite cède une boulangerie de 12 ans d\'ancienneté, 3 salariés, clientèle fidélisée. Prix de cession indicatif : 160-180k€.',published_at:ago(1),tags:'TPE,boulangerie,retraite,IDF',taille:'TPE'},
-  {category:'Cessions TPE/PME/ETI',title:'PME industrielle Auvergne-Rhône-Alpes cherche repreneur (CA 3,2 M€)',source:'Fusacq',url:'https://www.fusacq.com/buzz/fr',summary:'Fabricant de pièces métalliques pour l\'automobile, 18 salariés, carnet de commandes 2025 complet. Dirigeant-fondateur en transmission progressive.',published_at:ago(3),tags:'PME,industrie,automobile,AuRA',taille:'PME'},
-  {category:'Cessions TPE/PME/ETI',title:'Cabinet de conseil RH en région PACA à céder (CA 1,1 M€)',source:'Le Journal des Entreprises',url:'https://www.lejournaldesentreprises.com/',summary:'Cabinet créé en 2010, 8 consultants, clientèle grands comptes. Fondatrice cherche adossement à un groupe pour assurer la continuité.',published_at:ago(6),tags:'PME,conseil,RH,PACA',taille:'PME'},
-  {category:'Cessions TPE/PME/ETI',title:'ETI familiale distribution alimentaire Nord-Pas-de-Calais (CA 28 M€)',source:'Le Journal des Entreprises',url:'https://www.lejournaldesentreprises.com/',summary:'Acteur régional incontournable de la distribution BtoB, 95 salariés, réseau de 400 clients restaurateurs. Transmission familiale en cours, ouverture à un investisseur minoritaire.',published_at:ago(8),tags:'ETI,distribution,alimentaire,Nord',taille:'ETI'},
-  {category:'Cessions TPE/PME/ETI',title:'Studio de communication digitale Lyon (CA 640k€) — départ fondateur',source:'Fusacq',url:'https://www.fusacq.com/buzz/fr',summary:'Agence digitale spécialisée secteur santé, 5 salariés, MRR stable. Fondateur souhaitant se reconvertir, ouvert à une transition de 6 mois.',published_at:ago(12),tags:'TPE,digital,santé,Lyon',taille:'TPE'},
-  {category:'Cessions TPE/PME/ETI',title:'PME logistique e-commerce Bretagne cherche croissance externe (CA 7 M€)',source:'Le Journal des Entreprises',url:'https://www.lejournaldesentreprises.com/',summary:'Opérateur logistique spécialisé e-commerce, 35 salariés, croissance 25%/an sur 3 ans. Dirigeant cherche un investisseur pour accélérer l\'ouverture d\'un 3e entrepôt.',published_at:ago(18),tags:'PME,logistique,e-commerce,Bretagne',taille:'PME'},
+const MOCK=[
+  {id:1,category:'Macro & Marchés',title:'La BCE maintient ses taux face à une inflation core persistante',source:'Les Echos',url:'https://lesechos.fr',summary:'La BCE maintient ses taux directeurs inchangés en mai, l\'inflation core restant au-dessus de 2%. Christine Lagarde souligne la nécessité de rester vigilant. Les marchés n\'anticipent plus de baisse avant septembre 2026.',analysis_context:'La BCE fait face à un dilemme classique : une économie qui ralentit mais une inflation persistante dans les services. Cette décision accentue la divergence avec la Fed qui a déjà amorcé son cycle de baisse.',analysis_impact:'Pour les portefeuilles des clients, le maintien des taux signifie que les rendements obligataires resteront élevés plus longtemps. Les fonds monétaires et les obligations court terme restent attractifs. Les clients exposés à l\'immobilier à taux variable doivent être monitorés.',analysis_action:'Opportunité de discussion avec les clients sur le repositionnement obligataire et la duration. Moment favorable pour sécuriser des rendements sur des maturités intermédiaires (3-5 ans) avant une éventuelle baisse.',key_figures:'[{"value":"2,3%","label":"Inflation core zone euro"},{"value":"4,5%","label":"Taux de dépôt BCE"},{"value":"Sept. 2026","label":"Première baisse anticipée"}]',signal:'Signal modéré — Pas d\'urgence mais discussion patrimoniale à déclencher avec les clients exposés aux taux variables.',published_at:ago(2),tags:'BCE,taux,inflation,obligataire'},
+  {id:2,category:'Macro & Marchés',title:'Le CAC 40 franchit un nouveau plus haut historique porté par le luxe',source:'Bloomberg',url:'https://bloomberg.com',summary:'Le CAC 40 inscrit un nouveau record historique à 8 420 points, porté par LVMH (+4,2%), Hermès (+3,8%) et Kering (+2,9%) après des chiffres Asie solides. Volume en hausse de 35% vs moyenne.',analysis_context:'La reprise de la consommation de luxe en Chine post-réouverture confirme la résilience des marques françaises dans un contexte macro incertain. L\'indice CAC40 est désormais à +18% sur l\'année.',analysis_impact:'Les clients surexposés au luxe bénéficient de la performance mais voient leur concentration risque augmenter. Le CAC40 représente désormais >30% dans certains portefeuilles sans rééquilibrage.',analysis_action:'Revue des allocations actions françaises. Potentielle occasion de prise de bénéfice partielle et redéploiement vers d\'autres géographies (Asie émergente, US small caps) pour diversifier.',key_figures:'[{"value":"8 420","label":"CAC40 nouveau record"},{"value":"+18%","label":"Performance YTD"},{"value":"+35%","label":"Volumes vs moyenne"}]',signal:'Signal commercial — Les clients avec PEA chargés en valeurs luxe sont à appeler pour revue d\'allocation.',published_at:ago(5),tags:'CAC40,luxe,LVMH,actions'},
+  {id:3,category:'Macro & Marchés',title:'OAT 10 ans : le spread avec le Bund se resserre à 70 pb',source:'Reuters',url:'https://reuters.com',summary:'Le spread OAT-Bund revient à 70 pb, niveau le plus bas depuis janvier. Signal de détente sur le risque politique français. Les investisseurs étrangers reviennent progressivement sur la dette souveraine française.',analysis_context:'La normalisation du spread reflète un apaisement des tensions politiques et une perception améliorée de la trajectoire budgétaire française. Début 2025, le spread avait atteint 90 pb en période de crise gouvernementale.',analysis_impact:'Impact positif sur les portefeuilles obligataires français. Les clients détenteurs d\'OAT voient leurs positions se revaloriser. Les nouvelles souscriptions sur fonds euro bénéficieront de taux de rendement encore attractifs.',analysis_action:'Discussion possible avec les clients sur l\'intérêt de renforcer l\'exposition aux obligations d\'État françaises avant une normalisation complète du spread.',key_figures:'[{"value":"70 pb","label":"Spread OAT-Bund actuel"},{"value":"90 pb","label":"Spread au pic 2025"},{"value":"3,2%","label":"Rendement OAT 10 ans"}]',signal:'Signal faible — Contexte favorable aux obligations françaises, à intégrer dans les revues de portefeuille obligataire.',published_at:ago(9),tags:'OAT,taux,dette,obligations'},
+  {id:4,category:'M&A France',title:'Eurazeo cède sa participation dans Vitaprotech pour 1,2 Md€',source:'L\'Agefi',url:'https://agefi.fr',summary:'Eurazeo finalise la cession de Vitaprotech à Bridgepoint pour 1,2 Md€, soit un multiple de 4x sur l\'investissement initial. La transaction confirme la dynamique du marché M&A dans le secteur de la sécurité physique.',analysis_context:'Vitaprotech, créée par agrégation de 12 acquisitions en 5 ans sous Eurazeo, est devenue le leader européen de la sécurité physique (contrôle d\'accès, vidéosurveillance). Bridgepoint prévoit de continuer la stratégie build-up.',analysis_impact:'Eurazeo va distribuer une partie des proceeds à ses LP. Les fonds qui ont co-investi voient leur liquidité activée. Bonne illustration de la création de valeur par build-up dans les services B2B.',analysis_action:'Opportunité d\'éduquer les clients sur les stratégies build-up en PE. La performance (4x en 5 ans) est un excellent exemple pour justifier l\'allocation private equity dans les portefeuilles patrimoniaux.',key_figures:'[{"value":"1,2 Md€","label":"Valorisation de cession"},{"value":"4x","label":"Multiple sur investissement"},{"value":"5 ans","label":"Durée de détention"}]',signal:'Signal pédagogique — Excellent exemple concret pour les conversations sur le private equity avec les clients.',published_at:ago(1),tags:'M&A,PE,Eurazeo,Bridgepoint,cession'},
+  {id:5,category:'M&A France',title:'Bpifrance prend 15 % du capital d\'Exotec dans un tour à 335 M€',source:'Capital Finance',url:'#',summary:'Bpifrance entre au capital d\'Exotec pour financer l\'expansion nord-américaine de la licorne lyonnaise. Le tour à 335M€ valorise la société à 2,2 Md€.',analysis_context:'Exotec, spécialiste des robots d\'entrepôt (système Skypod), équipe déjà 50 clients dont Carrefour, Uniqlo et Gap. L\'expansion US cible les grands centres de distribution e-commerce.',analysis_impact:'L\'entrée de Bpifrance réduit le risque et crédibilise la trajectoire. Le secteur de la robotique logistique reste une des thèses d\'investissement les plus solides du deep tech français.',analysis_action:'À mentionner dans le contexte des opportunités d\'investissement en tech française. Les clients avec appétit venture peuvent se positionner sur des fonds spécialisés deep tech exposés à ce secteur.',key_figures:'[{"value":"2,2 Md€","label":"Valorisation post-money"},{"value":"335 M€","label":"Montant du tour"},{"value":"50+","label":"Clients grands comptes"}]',signal:'Signal sectoriel — Dynamique robotique/logistique à présenter aux clients intéressés par le deep tech.',published_at:ago(6),tags:'Bpifrance,startup,robotique,licorne'},
+  {id:6,category:'M&A France',title:'TotalEnergies acquiert un portefeuille solaire de 2 GW à Engie',source:'Les Echos',url:'#',summary:'Transaction de ~900M€ renforçant la position de TotalEnergies dans les ENR en Europe du Sud (Espagne, Portugal, Italie). Engie se recentre sur les réseaux et le B2B.',analysis_context:'La consolidation du secteur solaire européen s\'accélère. TotalEnergies vise 100 GW de capacité renouvelable d\'ici 2030 (35 GW actuellement). L\'acquisition s\'inscrit dans une stratégie de croissance externe ciblée.',analysis_impact:'Pour les clients exposés aux infrastructures ENR, cette transaction confirme la valorisation robuste des actifs solaires opérationnels (7-8x EBITDA). Signal positif pour les fonds infrastructure.',analysis_action:'Renforce la thèse des fonds infrastructure/ENR pour les portefeuilles cherchant des actifs réels avec rendement régulier et protection inflation.',key_figures:'[{"value":"900 M€","label":"Valorisation estimée"},{"value":"2 GW","label":"Capacité solaire acquise"},{"value":"100 GW","label":"Objectif TotalEnergies 2030"}]',signal:'Signal sectoriel — Confirme la valorisation des actifs ENR, pertinent pour les clients exposés aux fonds infrastructure.',published_at:ago(14),tags:'M&A,énergie,solaire,infrastructure'},
+  {id:7,category:'Patrimoine & Fiscalité',title:'PLF 2027 : premières fuites sur la réforme de l\'assurance-vie',source:'Club Patrimoine',url:'#',summary:'Le gouvernement envisage de modifier le régime fiscal de l\'assurance-vie pour les contrats >150k€ : taxation accrue des plus-values au-delà de 8 ans, possiblement alignée sur le PFU à 30%.',analysis_context:'L\'assurance-vie représente 1 950 Md€ d\'encours en France. Toute modification fiscale majeure aurait un impact considérable sur les comportements d\'épargne. Ces fuites sont à prendre avec précaution — le projet de loi sera présenté en septembre.',analysis_impact:'Si confirmée, la réforme réduirait l\'avantage fiscal différentiel de l\'assurance-vie vs d\'autres enveloppes. Les contrats anciens (>8 ans, >150k€) seraient les plus impactés. À horizon 2027, les clients ont encore le temps de se positionner.',analysis_action:'Urgence modérée. Identifier les clients avec contrats anciens et encours importants. Initier une réflexion sur la diversification des enveloppes (PER, compte-titres, holding). Ne pas paniquer mais anticiper.',key_figures:'[{"value":"1 950 Md€","label":"Encours assurance-vie France"},{"value":"150k€","label":"Seuil de la réforme envisagée"},{"value":"30%","label":"PFU potentiellement applicable"}]',signal:'⚠️ Signal fort — Proactivité requise. Contacter les clients avec contrats anciens >150k€ pour revue patrimoniale.',published_at:ago(3),tags:'assurance-vie,fiscalité,PLF,réforme'},
+  {id:8,category:'Patrimoine & Fiscalité',title:'CDHR prolongée — impact direct pour les clients à hauts revenus',source:'AMF',url:'#',summary:'La contribution différentielle sur les hauts revenus (CDHR) est prolongée jusqu\'au retour du déficit sous 3% du PIB. Foyers concernés : revenus >250k€. Impact fiscal moyen estimé à 15-25k€ supplémentaires.',analysis_context:'La CDHR, instaurée en 2025, devait être temporaire. Sa prolongation sine die change la donne pour la planification fiscale des ménages aisés. Le déficit français étant à 5,4% du PIB, la levée n\'est pas attendue avant 2028-2029.',analysis_impact:'Charge fiscale accrue et durable pour les ménages >250k€ de revenus. Nécessité de revoir les stratégies d\'optimisation : PER, démembrement, holding patrimoniale, dons familiaux.',analysis_action:'Revue urgente des stratégies fiscales clients concernés. Maximiser les leviers disponibles : versements PER avant le 31/12, arbitrages assurance-vie, structuration revenus fonciers.',key_figures:'[{"value":">250k€","label":"Seuil de revenus concerné"},{"value":"15-25k€","label":"Surcoût fiscal moyen estimé"},{"value":"5,4%","label":"Déficit public actuel (objectif <3%)"}]',signal:'⚠️ Signal fort — Clients >250k€ de revenus à contacter impérativement pour optimisation fiscale 2026.',published_at:ago(20),tags:'CDHR,fiscalité,hauts revenus,optimisation'},
+  {id:9,category:'Patrimoine & Fiscalité',title:'Pacte Dutreil : nouvelle instruction fiscale publiée au BOFIP',source:'Légifrance',url:'#',summary:'L\'administration précise les conditions du Pacte Dutreil en contexte LBO : engagement collectif de conservation, rôle de direction, seuils de détention. Clarifications très attendues par les praticiens.',analysis_context:'Le Pacte Dutreil permet de transmettre une entreprise avec un abattement de 75% sur les droits de succession/donation. Les opérations à effet de levier créaient une zone de flou que cette instruction vient lever.',analysis_impact:'Sécurisation juridique des transmissions d\'entreprises structurées avec LBO. Les dirigeants qui ont recours au Dutreil dans le cadre d\'une vente partielle à un fonds PE ont désormais plus de visibilité.',analysis_action:'Revue des dossiers clients entrepreneurs en phase de cession ou de transmission. Le Dutreil reste l\'outil le plus puissant de transmission familiale — s\'assurer que les conditions sont bien respectées.',key_figures:'[{"value":"75%","label":"Abattement Dutreil sur droits de transmission"},{"value":"2 ans","label":"Durée engagement collectif minimum"},{"value":"34%","label":"Seuil de détention minimale (sociétés cotées)"}]',signal:'Signal pratique — Actualisation à partager avec les clients dirigeants propriétaires d\'entreprise.',published_at:ago(22),tags:'Dutreil,fiscalité,LBO,transmission,entreprise'},
+  {id:10,category:'Private Equity',title:'Ardian boucle son fonds secondaire record à 30 Md$',source:'PE International',url:'#',summary:'Ardian ASF IX clôture à 30 Md$, hard cap atteint en 14 mois. Sursouscription massive reflétant l\'appétit institutionnel pour le secondaire PE. Rendement cible : 15-18% net.',analysis_context:'Le marché secondaire PE connaît une croissance exponentielle : les LP cherchent à céder leurs positions primaires pour gérer la liquidité, créant une offre abondante à décote. Ardian est le leader mondial du segment.',analysis_impact:'Pour les clients institutionnels et UHNW, le secondaire PE offre un profil risque/rendement attractif : prix décotés, courbe en J atténuée, visibilité accrue sur les sous-jacents.',analysis_action:'Moment propice pour présenter les fonds secondaires aux clients UHNW cherchant une exposition PE avec moins de risque de timing. Plusieurs véhicules accessibles dès 100k€.',key_figures:'[{"value":"30 Md$","label":"Taille du fonds (record mondial)"},{"value":"14 mois","label":"Durée de levée"},{"value":"15-18%","label":"Rendement net cible"}]',signal:'Signal produit — Dynamique favorable aux secondaires PE. À présenter aux clients avec allocation PE existante ou cherchant une entrée progressive.',published_at:ago(4),tags:'Ardian,secondaire,PE,fonds'},
+  {id:11,category:'Private Equity',title:'PAI Partners en discussions exclusives pour acquérir Froneri à 15 Md€',source:'Reuters',url:'#',summary:'PAI Partners négocie l\'acquisition de Froneri (crèmes glacées, coentreprise Nestlé-R&R) pour 15 Md€. Si confirmé, ce serait l\'un des plus grands LBO européens de 2026.',analysis_context:'Froneri génère ~3,5 Md€ de CA avec des marges EBITDA autour de 18%. La valorisation implique un multiple de ~24x EV/EBITDA, reflet d\'un actif défensif à forte notoriété de marque (Häagen-Dazs, Mövenpick).',analysis_impact:'Opération qui confirme la résilience du M&A sur les actifs consumer défensifs malgré un contexte de taux élevés. Les fonds PE mid-large cap restent actifs sur des actifs premium.',analysis_action:'Illustration pertinente pour les clients qui questionnent la performance PE en contexte de taux hauts : le pricing premium persiste sur les actifs de qualité.',key_figures:'[{"value":"15 Md€","label":"Valorisation estimée"},{"value":"3,5 Md€","label":"Chiffre d\'affaires Froneri"},{"value":"24x","label":"Multiple EV/EBITDA estimé"}]',signal:'Signal marché — Confirme le dynamisme du M&A large cap. Bon exemple pour illustrer la résilience du PE.',published_at:ago(11),tags:'PAI,LBO,food,M&A'},
+  {id:12,category:'Private Equity',title:'Tikehau lance un fonds 500 M€ dédié à la défense européenne',source:'L\'Agefi',url:'#',summary:'Tikehau T2 Defence cible les entreprises de la chaîne de valeur défense européenne : équipementiers, cyber, spatial, drones. Objectif : 500M€, premier closing à 180M€.',analysis_context:'Le réarmement européen s\'accélère post-Ukraine. Les budgets défense augmentent dans toute l\'UE (+40% en moyenne depuis 2022). Les PME/ETI de la défense, souvent sous-financées, représentent une opportunité de croissance.',analysis_impact:'Tikehau combine impact géopolitique et rendement financier. Les sous-jacents (équipementiers, cyber) bénéficient de contrats pluriannuels avec les États, offrant une visibilité exceptionnelle.',analysis_action:'À présenter aux clients cherchant une allocation thématique avec ancrage géopolitique fort. Le profil risque est modéré (contrats d\'État) avec un potentiel de rendement attractif.',key_figures:'[{"value":"500 M€","label":"Objectif de levée"},{"value":"180 M€","label":"Premier closing"},{"value":"+40%","label":"Hausse budgets défense UE depuis 2022"}]',signal:'Signal produit — Thèse défense très portée. À proposer aux clients avec appétit pour le PE thématique.',published_at:ago(22),tags:'Tikehau,défense,PE,thématique'},
+  {id:13,category:'Family Office',title:'Les family offices français doublent leur exposition au private credit',source:'Campden Wealth',url:'#',summary:'Rapport Campden-UBS : allocations en private credit passées de 4% à 9% dans les FO français en 2025. Recherche de rendement ajusté au risque supérieur aux obligations souveraines.',analysis_context:'Le private credit (dette privée) offre des rendements de 8-12% avec une seniorité dans la structure du capital. Les family offices, avec leur horizon long terme, sont idéalement positionnés pour absorber l\'illiquidité.',analysis_impact:'La tendance de fond est structurelle : private credit comble le vide laissé par les banques dans le financement des PME. Les rendements restent attractifs même en contexte de baisse des taux.',analysis_action:'Benchmark utile pour les clients HNW : si leur allocation PC est <5%, il y a un potentiel de rééquilibrage. Plusieurs gérants accessibles avec tickets d\'entrée à partir de 100k€.',key_figures:'[{"value":"9%","label":"Allocation moyenne PC des FO français (2025)"},{"value":"4%","label":"Allocation PC en 2023"},{"value":"8-12%","label":"Rendement cible private credit"}]',signal:'Signal allocation — Tendance forte des FO à benchmarker avec les clients UHNW sur leur propre allocation.',published_at:ago(7),tags:'family office,private credit,allocation,dette privée'},
+  {id:14,category:'Family Office',title:'La famille Mulliez restructure Creadev autour du climat',source:'Les Echos',url:'#',summary:'Creadev (FO Mulliez, ~5 Md€ d\'actifs) annonce un pivot vers l\'investissement à impact climatique : 40% du portefeuille d\'ici 2027. Désinvestissement progressif des actifs carbonés.',analysis_context:'Creadev gère la fortune des 700+ membres de la famille Mulliez (fondateurs Auchan, Décathlon, Leroy Merlin). Ce pivot illustre la transformation des FO familiaux vers des mandats plus explicitement responsables.',analysis_impact:'Signal fort sur l\'évolution des allocations long terme dans les grandes fortunes familiales. La transition énergétique devient un thème d\'investissement dominant, pas seulement éthique.',analysis_action:'Conversation à initier avec les clients sur leur propre positionnement ESG/impact. Les fonds spécialisés climat (transition, ENR, efficacité énergétique) méritent une place dans les allocations.',key_figures:'[{"value":"~5 Md€","label":"Actifs sous gestion Creadev"},{"value":"40%","label":"Objectif allocation impact d\'ici 2027"},{"value":"700+","label":"Membres de la famille Mulliez"}]',signal:'Signal tendance — Illustre l\'évolution vers l\'impact investing dans les grandes familles. Bonne base de discussion avec clients fortune.',published_at:ago(13),tags:'family office,impact,climat,Creadev,Mulliez'},
+  {id:15,category:'Family Office',title:'Pinault renforce Artémis dans le sport business européen',source:'Bloomberg',url:'#',summary:'Artémis (FO Pinault, ~30 Md€) prend une participation dans un club de football européen. Renforce son exposition sport après Rennes et CAA Sports Media.',analysis_context:'Le sport professionnel attire de plus en plus les grandes fortunes comme classe d\'actifs alternative. Les droits TV, le naming, les licences de marque génèrent des flux stables et en forte croissance.',analysis_impact:'Les actifs sportifs montrent une corrélation faible avec les marchés financiers traditionnels, ce qui en fait un outil de diversification intéressant pour les portefeuilles UHNW.',analysis_action:'Thème émergent pour les clients UHNW cherchant des alternatives réelles. Des fonds permettent désormais d\'accéder à cette classe d\'actifs (clubs, droits, infrastructure sportive).',key_figures:'[{"value":"~30 Md€","label":"Actifs estimés Artémis"},{"value":"3e","label":"Acquisition sportive d\'Artémis en 3 ans"},{"value":"+15%/an","label":"Croissance droits TV sport européen"}]',signal:'Signal tendance — Sport comme actif alternatif : thème à introduire pour les clients UHNW cherchant diversification.',published_at:ago(26),tags:'family office,sport,Pinault,Artémis,alternatifs'},
+  {id:16,category:'Réglementation',title:'AMF : nouvelle doctrine sur les fonds evergreen retail',source:'AMF',url:'#',summary:'L\'AMF encadre la commercialisation des fonds evergreen auprès des clients non-professionnels : conditions de liquidité trimestrielle, information renforcée sur l\'illiquidité résiduelle.',analysis_context:'Les fonds evergreen (à capital variable, sans maturité fixe) permettent un accès continu au private equity. La croissance rapide de leur commercialisation retail a alerté le régulateur sur les risques de liquidité.',analysis_impact:'La doctrine AMF impose des garde-fous : gates de liquidité, documentation renforcée, profilage client strict. Impact opérationnel pour les CGP et les gérants distribuant ces véhicules.',analysis_action:'Revue des fonds evergreen en portefeuille client. S\'assurer que la documentation de souscription est conforme à la nouvelle doctrine. Former l\'équipe sur les nouvelles obligations d\'information.',key_figures:'[{"value":"Trimestrielle","label":"Fréquence minimale de liquidité imposée"},{"value":"10%","label":"Gate maximum par fenêtre de rachat"},{"value":"2025","label":"Entrée en vigueur de la doctrine"}]',signal:'Signal conformité — Action requise : revue des pratiques de distribution des evergreens.',published_at:ago(5),tags:'AMF,evergreen,réglementation,conformité,retail'},
+  {id:17,category:'Réglementation',title:'DORA : entrée en vigueur effective pour les sociétés de gestion',source:'ACPR',url:'#',summary:'DORA pleinement applicable depuis janvier. L\'ACPR publie ses premiers retours : 60% des acteurs en conformité, 40% en plan de rattrapage. Risques cyber et sous-traitance ICT principaux points de contrôle.',analysis_context:'DORA (Digital Operational Resilience Act) impose aux acteurs financiers un cadre de résilience numérique : tests de pénétration, cartographie des prestataires ICT, plans de continuité. Amendes jusqu\'à 1% du CA.',analysis_impact:'Coût de conformité significatif pour les petites structures. Les sociétés non conformes s\'exposent à des sanctions ACPR et à un risque réputationnel auprès des clients institutionnels.',analysis_action:'Vérification de la conformité DORA au sein de Finary One. S\'assurer que les prestataires tech sont dans le scope et documentés.',key_figures:'[{"value":"60%","label":"Acteurs en conformité (ACPR)"},{"value":"1%","label":"Amende maximale (% du CA annuel)"},{"value":"Janv. 2025","label":"Date d\'entrée en vigueur"}]',signal:'Signal conformité — Action interne requise : vérification du niveau de conformité DORA de Finary One.',published_at:ago(16),tags:'DORA,conformité,cyber,réglementation'},
+  {id:18,category:'Réglementation',title:'MiCA : l\'ESMA publie ses orientations finales sur les crypto-actifs',source:'ESMA',url:'#',summary:'L\'ESMA finalise le cadre MiCA : classification des stablecoins, obligations des CASPs, règles de ségrégation des actifs clients. Entrée en vigueur progressive jusqu\'en décembre 2026.',analysis_context:'MiCA crée un cadre réglementaire unifié pour les crypto-actifs dans l\'UE, première juridiction majeure à le faire. Les émetteurs de stablecoins et les plateformes d\'échange sont les plus impactés.',analysis_impact:'Pour les clients avec exposition crypto, MiCA apporte une protection réglementaire accrue (ségrégation des actifs, audits). La conformité devient un critère de sélection des plateformes.',analysis_action:'Mettre à jour la documentation client sur les risques crypto en intégrant le cadre MiCA. Sélectionner uniquement des plateformes en cours d\'agrément CASP pour les clients avec exposition.',key_figures:'[{"value":"Déc. 2026","label":"Date d\'entrée en vigueur complète"},{"value":"27","label":"États membres UE couverts"},{"value":"100+","label":"Plateformes en demande d\'agrément CASP"}]',signal:'Signal réglementaire — Mettre à jour les documents de risk disclosure crypto clients.',published_at:ago(26),tags:'MiCA,crypto,ESMA,réglementation'},
+  {id:19,category:'Startups FR',title:'Mistral AI lève 600 M€ en Series C à 6 Md€ de valorisation',source:'TechCrunch',url:'#',summary:'Mistral AI boucle un tour record porté par General Atlantic et des fonds souverains du Golfe. La valorisation triple en 18 mois. Le modèle Mistral Large 3 rivalise avec GPT-4o selon les benchmarks.',analysis_context:'Mistral est le principal concurrent européen d\'OpenAI. Sa capacité à lever à une valorisation de 6 Md€ en contexte de consolidation IA mondiale est remarquable. Les revenus récurrents (ARR) auraient dépassé 50M€.',analysis_impact:'Pour les clients dirigeants, Mistral illustre la montée en puissance de l\'IA française et européenne. Pour les investisseurs, le secteur IA générative reste le thème d\'investissement le plus porteur.',analysis_action:'Excellente illustration pour les conversations sur l\'allocation tech/IA dans les portefeuilles. Plusieurs fonds de venture exposés à Mistral et à l\'écosystème IA français.',key_figures:'[{"value":"6 Md€","label":"Valorisation post-money"},{"value":"600 M€","label":"Montant levé (Series C)"},{"value":"50 M€+","label":"ARR estimé"}]',signal:'Signal sectoriel — L\'IA générative reste le thème dominant. À intégrer dans les discussions d\'allocation venture.',published_at:ago(2),tags:'Mistral,IA,licorne,Series C,tech'},
+  {id:20,category:'Startups FR',title:'Alan dépasse les 700 000 assurés et vise la rentabilité 2026',source:'Maddyness',url:'#',summary:'Alan atteint 700k assurés en Europe (+35% YoY) et confirme la rentabilité opérationnelle pour 2026. Le taux de sinistralité s\'améliore grâce à l\'IA préventive.',analysis_context:'Alan a révolutionné l\'assurance santé collective en France avec une UX premium et une approche data-first. La trajectoire vers la rentabilité est un signal fort de maturité pour le modèle économique.',analysis_impact:'Alan représente un cas d\'école pour les fondateurs clients : croissance forte + chemin vers la rentabilité sans sacrifier l\'un pour l\'autre. La valorisation (>4 Md€ au dernier tour) reste cohérente.',analysis_action:'À mentionner dans les discussions sur l\'assurance santé collective avec les clients dirigeants. Alan peut être une alternative pertinente pour la mutuelle d\'entreprise.',key_figures:'[{"value":"700k","label":"Assurés en Europe"},{"value":"+35%","label":"Croissance YoY"},{"value":"2026","label":"Objectif de rentabilité opérationnelle"}]',signal:'Signal produit — Alan comme alternative à mentionner aux clients dirigeants pour leur assurance santé collective.',published_at:ago(10),tags:'Alan,santé,insurtech,rentabilité'},
+  {id:21,category:'Startups FR',title:'Pigment vise une IPO au Nasdaq fin 2026 valorisée à 2 Md€',source:'Sifted',url:'#',summary:'Pigment (FP&A enterprise) en discussion avec Goldman Sachs et Morgan Stanley pour une IPO Nasdaq fin 2026. ARR >80M€, croissance 70% YoY, clients : Unilever, Deliveroo, Figma.',analysis_context:'Pigment a créé une nouvelle catégorie : la planification financière unifiée (remplace Excel + Anaplan pour les grandes entreprises). L\'IPO Nasdaq marquerait la première cotation d\'une SaaS B2B française aux US.',analysis_impact:'Une IPO réussie valoriserait l\'écosystème tech français et ouvrirait la porte à des sorties similaires pour d\'autres scale-ups. Pour les investisseurs actuels (Bain Capital, IVP), retour anticipé à 10-15x.',analysis_action:'À suivre pour les clients exposés au venture via des fonds ayant Pigment en portefeuille. La préparation à l\'IPO est aussi un signal de maturité du marché SaaS B2B français.',key_figures:'[{"value":">80 M€","label":"ARR (revenu récurrent annuel)"},{"value":"70%","label":"Croissance YoY"},{"value":"2 Md€","label":"Valorisation cible IPO"}]',signal:'Signal sectoriel — Surveiller le processus IPO pour les clients exposés au venture tech français.',published_at:ago(26),tags:'Pigment,IPO,Nasdaq,SaaS,tech'},
+  {id:22,category:'Cessions TPE/PME/ETI',title:'Cession d\'une boulangerie-pâtisserie artisanale Île-de-France (CA 480k€)',source:'Fusacq',url:'https://www.fusacq.com/buzz/fr',summary:'Dirigeant partant à la retraite cède une boulangerie de 12 ans, 3 salariés, clientèle fidélisée. Prix indicatif : 160-180k€. Emplacement premium, bail 9 ans restants.',analysis_context:'Le marché de la cession de fonds de commerce artisanaux reste très actif, porté par le départ en retraite de la génération des créateurs des années 80-90. Délais de vente courts pour les affaires saines.',analysis_impact:'Ce type de cession génère un capital de liquidité pour le dirigeant-vendeur : 150-200k€ nets, soit un événement patrimonial significatif pour un profil TPE.',analysis_action:'Profil client potentiel : artisan cédant avec un capital de cession à investir. Besoins : placement du prix de cession, optimisation fiscale du gain, préparation retraite.',key_figures:'[{"value":"480k€","label":"Chiffre d\'affaires annuel"},{"value":"160-180k€","label":"Prix de cession estimé"},{"value":"12 ans","label":"Ancienneté de l\'établissement"}]',signal:'Signal commercial TPE — Profil cédant artisanal à intégrer dans le radar prospects.',published_at:ago(1),tags:'TPE,boulangerie,retraite,IDF,cession',taille:'TPE'},
+  {id:23,category:'Cessions TPE/PME/ETI',title:'PME industrielle Auvergne-Rhône-Alpes cherche repreneur (CA 3,2 M€)',source:'Fusacq',url:'https://www.fusacq.com/buzz/fr',summary:'Fabricant de pièces métalliques automobile, 18 salariés, carnet de commandes 2025 complet. Dirigeant-fondateur en transmission progressive sur 18 mois. Valorisation estimée 1,2-1,5 M€.',analysis_context:'La filière automobile en reconversion (passage à l\'électrique) crée une fenêtre de cession pour les équipementiers traditionnels. Les repreneurs industriels et les fonds small cap s\'intéressent à ce type d\'actif.',analysis_impact:'Cession PME industrielle : produit de cession entre 900k€ et 1,2M€ net pour le dirigeant, après IS et imposition de la plus-value. Événement patrimonial majeur nécessitant une stratégie de réemploi.',analysis_action:'Profil prospect prioritaire : dirigeant 50-60 ans, actif unique = son entreprise, peu ou pas investi financièrement. Accompagnement sur le prix de cession, la fiscalité (apport-cession, pacte Dutreil) et le placement.',key_figures:'[{"value":"3,2 M€","label":"Chiffre d\'affaires"},{"value":"1,2-1,5 M€","label":"Valorisation estimée"},{"value":"18 mois","label":"Durée de la transition prévue"}]',signal:'⚠️ Signal commercial fort — Dirigeant PME en cession : prospect patrimonial majeur à approcher.',published_at:ago(3),tags:'PME,industrie,automobile,AuRA,cession',taille:'PME'},
+  {id:24,category:'Cessions TPE/PME/ETI',title:'Cabinet de conseil RH en région PACA à céder (CA 1,1 M€)',source:'Le Journal des Entreprises',url:'https://www.lejournaldesentreprises.com/',summary:'Cabinet créé en 2010, 8 consultants, clientèle grands comptes. Fondatrice cherche adossement à un groupe ou repreneur individuel. Marge nette ~18%.',analysis_context:'Les cabinets de conseil RH indépendants font face à la concurrence des grands groupes et cherchent à se consolider. La fondatrice privilégie une transition en douceur avec maintien des équipes.',analysis_impact:'Produit de cession estimé à 600-800k€. Profil fondatrice : 50 ans, capital de cession à réinvestir, potentiellement intéressée par des solutions de préparation retraite et diversification patrimoniale.',analysis_action:'Approche à calibrer sur le profil : accompagnement fiscal de la cession (régime de faveur PME, apport-cession), puis allocation du produit net sur enveloppes diversifiées.',key_figures:'[{"value":"1,1 M€","label":"Chiffre d\'affaires"},{"value":"18%","label":"Marge nette"},{"value":"600-800k€","label":"Prix de cession estimé"}]',signal:'Signal commercial — Fondatrice cédante : profil patrimonial à approcher post-cession.',published_at:ago(6),tags:'PME,conseil,RH,PACA,cession',taille:'PME'},
+  {id:25,category:'Cessions TPE/PME/ETI',title:'ETI familiale distribution alimentaire Nord-Pas-de-Calais (CA 28 M€)',source:'Le Journal des Entreprises',url:'https://www.lejournaldesentreprises.com/',summary:'Acteur régional BtoB, 95 salariés, réseau 400 clients restaurateurs. Famille propriétaire depuis 3 générations, cherche investisseur minoritaire pour financer la croissance avant cession totale horizon 5 ans.',analysis_context:'Les ETI familiales du secteur alimentaire font face à des impératifs de modernisation logistique et de digital. L\'entrée d\'un investisseur minoritaire est souvent l\'antichambre d\'une cession totale.',analysis_impact:'Cession potentielle à horizon 5 ans valorisée 15-20 M€. Famille propriétaire : plusieurs générations concernées, problématique de transmission patrimoniale complexe (droits de succession, DMTG, Dutreil).',analysis_action:'Profil client idéal Finary One : famille dirigeante d\'ETI, patrimoine concentré sur l\'entreprise, besoin d\'ingénierie patrimoniale et successorale sophistiquée.',key_figures:'[{"value":"28 M€","label":"Chiffre d\'affaires"},{"value":"95","label":"Salariés"},{"value":"15-20 M€","label":"Valorisation cession estimée (horizon 5 ans)"}]',signal:'⚠️ Signal fort — Famille dirigeante ETI : profil Finary One cœur de cible, besoin d\'ingénierie patrimoniale.',published_at:ago(8),tags:'ETI,distribution,alimentaire,Nord,famille,cession',taille:'ETI'},
+  {id:26,category:'Cessions TPE/PME/ETI',title:'Studio de communication digitale Lyon (CA 640k€) — départ fondateur',source:'Fusacq',url:'https://www.fusacq.com/buzz/fr',summary:'Agence digitale spécialisée secteur santé, 5 salariés, MRR stable. Fondateur en reconversion, transition 6 mois. Prix demandé : 280k€.',analysis_context:'Le marché des agences digitales spécialisées est actif. La spécialisation santé est un avantage concurrentiel dans un secteur en forte digitalisation.',analysis_impact:'Capital de cession net ~200k€ pour le fondateur. Profil jeune (reconversion), horizon d\'investissement long, potentiellement intéressé par des produits de diversification (SCPI, fonds de croissance).',analysis_action:'Prospect post-cession avec capital modeste mais horizon long. Produits adaptés : assurance-vie en UC, PEA PME, fonds diversifiés.',key_figures:'[{"value":"640k€","label":"Chiffre d\'affaires"},{"value":"280k€","label":"Prix demandé"},{"value":"~200k€","label":"Net estimé après impôts"}]',signal:'Signal commercial TPE — Fondateur jeune en reconversion : prospect long terme à intégrer.',published_at:ago(12),tags:'TPE,digital,santé,Lyon,cession',taille:'TPE'},
+  {id:27,category:'Cessions TPE/PME/ETI',title:'PME logistique e-commerce Bretagne cherche investisseur (CA 7 M€)',source:'Le Journal des Entreprises',url:'https://www.lejournaldesentreprises.com/',summary:'Opérateur logistique e-commerce, 35 salariés, croissance +25%/an sur 3 ans. Dirigeant cherche minoritaire pour ouvrir un 3e entrepôt. Non dilutif souhaité, OC ou prêt participatif.',analysis_context:'La logistique e-commerce régionale connaît une consolidation rapide. Les acteurs indépendants de taille intermédiaire sont soit repris par les grands groupes soit refinancés pour accélérer.',analysis_impact:'Dirigeant en phase de croissance, pas encore en mode cession. Profil : entrepreneur 40-50 ans, peu de patrimoine liquide mais création de valeur rapide. Horizon de cession probable : 3-5 ans.',analysis_action:'Approche différente : accompagnement sur le financement de la croissance (OC, capital dev) et anticipation de la cession future. Construire la relation maintenant pour être présent lors de la liquidité.',key_figures:'[{"value":"7 M€","label":"Chiffre d\'affaires"},{"value":"+25%","label":"Croissance annuelle sur 3 ans"},{"value":"35","label":"Salariés"}]',signal:'Signal prospect — Dirigeant en croissance : construire la relation pour être présent à la cession future.',published_at:ago(18),tags:'PME,logistique,e-commerce,Bretagne,croissance',taille:'PME'},
 ];
  
-const TPE_MOCK = MOCK.filter(i => i.category === 'Cessions TPE/PME/ETI');
-const MAIN_MOCK = MOCK.filter(i => i.category !== 'Cessions TPE/PME/ETI');
+const TPE_DATA = MOCK.filter(i=>i.category==='Cessions TPE/PME/ETI');
+const MAIN_DATA = MOCK.filter(i=>i.category!=='Cessions TPE/PME/ETI');
  
-let allData = [], tpeData = [], activeTab = 'Tous', searchQuery = '', activeTag = '', lastUpdated = null;
+let allData=MAIN_DATA, tpeData=TPE_DATA, activeTab='Tous', searchQuery='', activeTag='', lastUpdated=null;
+let currentArticleId = null;
  
-function timeAgo(d) {
-  const s = Math.floor((Date.now() - new Date(d)) / 1000);
-  if (s < 60) return 'à l\'instant';
-  if (s < 3600) return `${Math.floor(s/60)} min`;
-  if (s < 86400) return `${Math.floor(s/3600)} h`;
-  return `${Math.floor(s/86400)} j`;
+// ── UTILS ──
+function timeAgo(d){const s=Math.floor((Date.now()-new Date(d))/1000);if(s<60)return'à l\'instant';if(s<3600)return`${Math.floor(s/60)} min`;if(s<86400)return`${Math.floor(s/3600)} h`;return`${Math.floor(s/86400)} j`;}
+function updateDatetime(){const n=new Date();const d=n.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});const t=n.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});document.getElementById('datetime').innerHTML=`${d.charAt(0).toUpperCase()+d.slice(1)}<br>${t}`;}
+ 
+// ── NAVIGATION ──
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  window.scrollTo(0,0);
 }
  
-function updateDatetime() {
-  const n = new Date();
-  const d = n.toLocaleDateString('fr-FR', {weekday:'long',day:'numeric',month:'long'});
-  const t = n.toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'});
-  document.getElementById('datetime').innerHTML = `${d.charAt(0).toUpperCase()+d.slice(1)}<br>${t}`;
+function goHome() {
+  currentArticleId = null;
+  document.getElementById('tabsBar').style.display = 'flex';
+  document.getElementById('briefingBar').style.display = 'flex';
+  document.getElementById('searchInput').parentElement.style.display = 'block';
+  showPage('homePage');
 }
  
-async function fetchData() {
-  allData = MAIN_MOCK;
-  tpeData = TPE_MOCK;
-  lastUpdated = new Date();
-  render();
+function openArticle(id) {
+  const all = [...allData, ...tpeData];
+  const item = all.find(a=>a.id===id);
+  if (!item) return;
+  currentArticleId = id;
+  document.getElementById('tabsBar').style.display = 'none';
+  renderArticlePage(item);
+  showPage('articlePage');
 }
  
-function getFiltered() {
-  const pool = activeTab === 'Cessions TPE/PME/ETI' ? tpeData : allData;
-  return pool.filter(item => {
-    const mt = activeTab === 'Tous' || item.category === activeTab;
-    const q = searchQuery.toLowerCase();
-    const ms = !q || item.title.toLowerCase().includes(q) || item.source.toLowerCase().includes(q) || (item.tags||'').toLowerCase().includes(q);
-    const mg = !activeTag || (item.tags||'').toLowerCase().includes(activeTag.toLowerCase());
-    return mt && ms && mg;
+// ── ARTICLE PAGE ──
+function renderArticlePage(item) {
+  const figures = item.key_figures ? JSON.parse(item.key_figures) : [];
+  const tags = (item.tags||'').split(',').filter(Boolean);
+  const isTpe = item.category==='Cessions TPE/PME/ETI';
+ 
+  // Related articles
+  const all = [...allData, ...tpeData];
+  const related = all.filter(a=>a.id!==item.id && (a.category===item.category || (item.tags||'').split(',').some(t=>(a.tags||'').includes(t.trim())))).slice(0,4);
+ 
+  document.getElementById('articlePage').innerHTML = `
+    <div class="article-hero">
+      <div class="article-hero-bg"></div>
+      <div class="article-hero-overlay"></div>
+      <div class="article-hero-content">
+        <button class="article-back" onclick="goHome()">
+          <span class="article-back-arrow">←</span> Retour au hub
+        </button>
+        <div class="article-badge">${item.category}</div>
+        <h1 class="article-hero-title">${item.title}</h1>
+        <div class="article-hero-meta">
+          <span class="article-meta-source">${item.source}</span>
+          <span class="article-meta-time">Publié il y a ${timeAgo(item.published_at)}</span>
+          <div class="article-meta-tags">
+            ${tags.slice(0,4).map(t=>`<span class="article-tag">${t.trim()}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="article-body">
+ 
+      <!-- RÉSUMÉ -->
+      <div class="article-summary-box">
+        <div class="summary-label">Résumé · 4 points clés</div>
+        <div class="summary-text">${item.summary}</div>
+      </div>
+ 
+      <!-- CHIFFRES CLÉS -->
+      ${figures.length ? `
+        <div class="key-figures">
+          ${figures.map(f=>`
+            <div class="key-figure">
+              <div class="key-figure-value">${f.value}</div>
+              <div class="key-figure-label">${f.label}</div>
+            </div>
+          `).join('')}
+        </div>
+      ` : ''}
+ 
+      <!-- ANALYSE APPROFONDIE -->
+      <div class="article-analysis">
+        <div class="analysis-title">Analyse Finary One</div>
+ 
+        ${item.analysis_context ? `
+          <div class="analysis-block">
+            <div class="analysis-block-label">Contexte</div>
+            <div class="analysis-block-text">${item.analysis_context}</div>
+          </div>
+        ` : ''}
+ 
+        ${item.analysis_impact ? `
+          <div class="analysis-block">
+            <div class="analysis-block-label">Impact pour les portefeuilles</div>
+            <div class="analysis-block-text">${item.analysis_impact}</div>
+          </div>
+        ` : ''}
+ 
+        ${item.analysis_action ? `
+          <div class="analysis-block">
+            <div class="analysis-block-label">Actions recommandées</div>
+            <div class="analysis-block-text">${item.analysis_action}</div>
+          </div>
+        ` : ''}
+      </div>
+ 
+      <!-- SIGNAL COMMERCIAL -->
+      ${item.signal ? `
+        <div class="signal-box">
+          <div class="signal-box-header">
+            <div class="signal-icon">⚡</div>
+            <span class="signal-title">Signal Wealth Advisor</span>
+          </div>
+          <div class="signal-text">${item.signal}</div>
+        </div>
+      ` : ''}
+ 
+      <!-- CTA SOURCE -->
+      <div class="article-cta">
+        <div class="article-cta-left">
+          <div class="article-cta-label">Source originale</div>
+          <div class="article-cta-source">${item.source}</div>
+        </div>
+        <a href="${item.url}" target="_blank" class="article-cta-btn">
+          Lire l'article original <span class="article-cta-btn-arrow">↗</span>
+        </a>
+      </div>
+ 
+      <!-- ARTICLES LIÉS -->
+      ${related.length ? `
+        <div class="related-section">
+          <div class="section-label">Articles liés</div>
+          <div class="related-grid">
+            ${related.map(r=>`
+              <div class="related-card" onclick="openArticle(${r.id})">
+                <div class="related-cat">${r.category}</div>
+                <div class="related-title">${r.title}</div>
+                <div class="related-meta">${r.source} · il y a ${timeAgo(r.published_at)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+ 
+    </div>
+  `;
+}
+ 
+// ── HOME RENDER ──
+function getFiltered(){
+  const pool=activeTab==='Cessions TPE/PME/ETI'?tpeData:allData;
+  return pool.filter(item=>{
+    const mt=activeTab==='Tous'||item.category===activeTab;
+    const q=searchQuery.toLowerCase();
+    const ms=!q||item.title.toLowerCase().includes(q)||item.source.toLowerCase().includes(q)||(item.tags||'').toLowerCase().includes(q);
+    const mg=!activeTag||(item.tags||'').toLowerCase().includes(activeTag.toLowerCase());
+    return mt&&ms&&mg;
   });
 }
  
-function getAllTags() {
-  const pool = [...allData, ...tpeData];
-  const tc = {};
-  pool.forEach(item => (item.tags||'').split(',').forEach(t => { const s=t.trim(); if(s) tc[s]=(tc[s]||0)+1; }));
+function getAllTags(){
+  const tc={};
+  [...allData,...tpeData].forEach(item=>(item.tags||'').split(',').forEach(t=>{const s=t.trim();if(s)tc[s]=(tc[s]||0)+1;}));
   return Object.entries(tc).sort((a,b)=>b[1]-a[1]).slice(0,22);
 }
  
-function groupBy(items) {
-  const g = {};
-  items.forEach(item => { if(!g[item.category]) g[item.category]=[]; g[item.category].push(item); });
-  return g;
-}
+function groupBy(items){const g={};items.forEach(item=>{if(!g[item.category])g[item.category]=[];g[item.category].push(item);});return g;}
  
-function artHTML(item) {
-  return `<div class="art-item" onclick="this.classList.toggle('expanded')">
-    <div class="art-title">${item.title}</div>
+function artHTML(item){
+  return `<div class="art-item">
+    <div class="art-title-link" onclick="openArticle(${item.id})">${item.title}</div>
     <div class="art-meta">
       <span class="art-source">${item.source}</span>
       <span class="art-sep">·</span>
       <span class="art-time">il y a ${timeAgo(item.published_at)}</span>
     </div>
-    ${item.summary ? `<div class="art-summary">${item.summary}</div>` : ''}
+    ${item.summary?`<div class="art-summary-inline">${item.summary}</div>`:''}
   </div>`;
 }
  
-function tpeItemHTML(item) {
-  const sizeColor = {'TPE':'rgba(122,92,58,0.12)','PME':'rgba(45,80,45,0.1)','ETI':'rgba(45,60,130,0.1)'};
-  const sizeText = {'TPE':'#7a5c3a','PME':'#3a6040','ETI':'#2d4080'};
-  const sz = item.taille || '';
-  const tagStyle = sz ? `style="color:${sizeText[sz]||'#7a5c3a'};background:${sizeColor[sz]||'rgba(122,92,58,0.12)'}"` : '';
-  return `<div class="tpe-item" onclick="this.classList.toggle('expanded')">
-    <div class="tpe-item-title">${item.title}</div>
+function tpeItemHTML(item){
+  const sizeColors={TPE:{c:'#7a5c3a',bg:'rgba(122,92,58,0.1)'},PME:{c:'#3a6040',bg:'rgba(58,96,64,0.1)'},ETI:{c:'#2d4080',bg:'rgba(45,64,128,0.1)'}};
+  const sc=sizeColors[item.taille]||sizeColors.TPE;
+  return `<div class="tpe-item">
+    <div class="tpe-title-link" onclick="openArticle(${item.id})">${item.title}</div>
     <div class="tpe-item-meta">
       <span class="tpe-source">${item.source}</span>
-      ${sz ? `<span class="tpe-size-tag" ${tagStyle}>${sz}</span>` : ''}
+      ${item.taille?`<span class="tpe-size-tag" style="color:${sc.c};background:${sc.bg};border-color:${sc.c}40">${item.taille}</span>`:''}
       <span class="tpe-time">il y a ${timeAgo(item.published_at)}</span>
     </div>
-    ${item.summary ? `<div class="tpe-summary">${item.summary}</div>` : ''}
   </div>`;
 }
  
-function renderTPESection(page) {
-  const tpe = tpeData.filter(item => {
-    const q = searchQuery.toLowerCase();
-    const ms = !q || item.title.toLowerCase().includes(q) || (item.tags||'').toLowerCase().includes(q);
-    const mg = !activeTag || (item.tags||'').toLowerCase().includes(activeTag.toLowerCase());
-    return ms && mg;
-  });
- 
-  const tpeSection = document.createElement('div');
-  tpeSection.className = 'tpe-section';
- 
-  const tpeCount = tpeData.length;
-  const tpeCt = tpeData.filter(i=>i.taille==='TPE').length;
-  const pmeCt = tpeData.filter(i=>i.taille==='PME').length;
-  const etiCt = tpeData.filter(i=>i.taille==='ETI').length;
- 
-  tpeSection.innerHTML = `
+function renderTPESection(page){
+  const tpe=tpeData.filter(item=>{const q=searchQuery.toLowerCase();return(!q||item.title.toLowerCase().includes(q)||(item.tags||'').toLowerCase().includes(q))&&(!activeTag||(item.tags||'').toLowerCase().includes(activeTag.toLowerCase()));});
+  const tpeCt=tpeData.filter(i=>i.taille==='TPE').length;
+  const pmeCt=tpeData.filter(i=>i.taille==='PME').length;
+  const etiCt=tpeData.filter(i=>i.taille==='ETI').length;
+  const sec=document.createElement('div');sec.className='tpe-section';
+  sec.innerHTML=`
     <div class="tpe-banner">
       <div class="tpe-banner-left">
         <div class="tpe-banner-icon">🏭</div>
-        <div>
-          <div class="tpe-banner-title">Cessions d'entreprises — France</div>
-          <div class="tpe-banner-sub">TPE · PME · ETI · Opportunités de transmission</div>
-        </div>
+        <div><div class="tpe-banner-title">Cessions d'entreprises — France</div><div class="tpe-banner-sub">TPE · PME · ETI · Opportunités de transmission</div></div>
       </div>
       <div class="tpe-banner-stats">
         <div class="tpe-stat"><div class="tpe-stat-n">${tpeCt}</div><div class="tpe-stat-l">TPE</div></div>
@@ -475,202 +566,103 @@ function renderTPESection(page) {
         <a href="https://www.fusacq.com/buzz/fr" target="_blank" class="tpe-source-link">Fusacq Buzz</a>
         <a href="https://www.lejournaldesentreprises.com/" target="_blank" class="tpe-source-link">Journal des Entreprises</a>
       </div>
-    </div>
-  `;
-  page.appendChild(tpeSection);
- 
-  // Populate TPE grid — 3 columns by size
-  const grid = document.getElementById('tpeGrid');
-  const sizes = ['TPE', 'PME', 'ETI'];
-  sizes.forEach(size => {
-    const items = tpe.filter(i => i.taille === size);
-    const card = document.createElement('div');
-    card.className = 'tpe-card';
-    card.innerHTML = `
-      <div class="tpe-card-header">
-        <span class="tpe-card-title"><span class="tpe-dot"></span>${size}</span>
-        <span class="tpe-badge">${items.length} annonce${items.length>1?'s':''}</span>
-      </div>
-      ${items.length ? items.map(tpeItemHTML).join('') : '<p style="font-size:12px;color:var(--text3);padding:8px 0">Aucune annonce en ce moment</p>'}
-    `;
+    </div>`;
+  page.appendChild(sec);
+  const grid=document.getElementById('tpeGrid');
+  ['TPE','PME','ETI'].forEach(size=>{
+    const items=tpe.filter(i=>i.taille===size);
+    const card=document.createElement('div');card.className='tpe-card';
+    card.innerHTML=`<div class="tpe-card-header"><span class="tpe-card-title"><span class="tpe-dot"></span>${size}</span><span class="tpe-badge">${items.length} annonce${items.length>1?'s':''}</span></div>${items.length?items.map(tpeItemHTML).join(''):'<p style="font-size:12px;color:var(--text3);padding:8px 0">Aucune annonce</p>'}`;
     grid.appendChild(card);
   });
 }
  
-function render() {
-  const filtered = getFiltered();
-  const page = document.getElementById('pageContent');
+function renderHome(){
+  const filtered=getFiltered();
+  const page=document.getElementById('homePage');
+  const total=allData.length+tpeData.length;
+  const fiscal=allData.filter(i=>i.category==='Patrimoine & Fiscalité').length;
+  const deals=allData.filter(i=>i.category==='M&A France').length;
+  document.getElementById('briefingText').innerHTML=`<strong>${total}</strong> articles · <strong>${fiscal}</strong> signaux fiscaux · <strong>${deals}</strong> deals M&A · <strong>${tpeData.length}</strong> cessions TPE/PME`;
+  const t=lastUpdated?lastUpdated.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}):'—';
+  document.getElementById('briefingTime').textContent=`Mis à jour · ${t}`;
+  document.getElementById('footerInfo').textContent=`Dernière actualisation · ${t} · Auto-refresh 30 min`;
+  page.innerHTML='';
  
-  const total = allData.length + tpeData.length;
-  const fiscal = allData.filter(i=>i.category==='Patrimoine & Fiscalité').length;
-  const deals = allData.filter(i=>i.category==='M&A France').length;
-  document.getElementById('briefingText').innerHTML =
-    `<strong>${total}</strong> articles · <strong>${fiscal}</strong> signaux fiscaux · <strong>${deals}</strong> deals M&A · <strong>${tpeData.length}</strong> cessions TPE/PME`;
-  const t = lastUpdated ? lastUpdated.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) : '—';
-  document.getElementById('briefingTime').textContent = `Mis à jour · ${t}`;
-  document.getElementById('footerInfo').textContent = `Dernière actualisation · ${t} · Auto-refresh 30 min`;
- 
-  page.innerHTML = '';
- 
-  // TPE only tab
-  if (activeTab === 'Cessions TPE/PME/ETI') {
-    renderTPESection(page);
-    return;
-  }
- 
-  if (!filtered.length && !searchQuery && !activeTag) {
-    page.innerHTML = `<div class="no-results"><p>Aucun résultat</p></div>`;
-    return;
-  }
+  if(activeTab==='Cessions TPE/PME/ETI'){renderTPESection(page);return;}
+  if(!filtered.length){page.innerHTML='<div class="no-results"><p>Aucun résultat</p></div>';return;}
  
   // HERO
-  if (activeTab === 'Tous' && !searchQuery && !activeTag) {
-    const heroItems = [...filtered].sort((a,b)=>new Date(b.published_at)-new Date(a.published_at)).slice(0,3);
-    const heroSection = document.createElement('div');
-    heroSection.className = 'hero-section';
-    heroSection.innerHTML = `
+  if(activeTab==='Tous'&&!searchQuery&&!activeTag){
+    const heroItems=[...filtered].sort((a,b)=>new Date(b.published_at)-new Date(a.published_at)).slice(0,3);
+    const hs=document.createElement('div');hs.className='hero-section';
+    hs.innerHTML=`
       <div class="section-label">À la une</div>
       <div class="hero-grid">
-        <div class="hero-main" onclick="this.classList.toggle('expanded')">
+        <div class="hero-main" onclick="openArticle(${heroItems[0]?.id})">
           <div class="hero-main-bg"></div><div class="hero-main-overlay"></div>
           <div class="hero-main-content">
             <span class="hero-cat-badge">${heroItems[0]?.category||''}</span>
             <div class="hero-main-title">${heroItems[0]?.title||''}</div>
-            <div class="hero-main-meta">
-              <span class="hero-source">${heroItems[0]?.source||''}</span>
-              <span class="hero-time">il y a ${timeAgo(heroItems[0]?.published_at)}</span>
-            </div>
-            ${heroItems[0]?.summary?`<div class="hero-summary-expanded">${heroItems[0].summary}</div>`:''}
+            <div class="hero-main-meta"><span class="hero-source">${heroItems[0]?.source||''}</span><span class="hero-time">il y a ${timeAgo(heroItems[0]?.published_at)}</span></div>
           </div>
         </div>
         ${heroItems.slice(1,3).map(item=>`
-          <div class="hero-secondary" onclick="this.classList.toggle('expanded')">
-            <div>
-              <div class="hero-sec-cat">${item.category}</div>
-              <div class="hero-sec-title">${item.title}</div>
-            </div>
-            <div>
-              <div class="hero-sec-meta">
-                <span class="hero-sec-source">${item.source}</span>
-                <span class="art-sep">·</span>
-                <span class="hero-sec-time">il y a ${timeAgo(item.published_at)}</span>
-              </div>
-              ${item.summary?`<div class="hero-sec-summary">${item.summary}</div>`:''}
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-    page.appendChild(heroSection);
+          <div class="hero-secondary" onclick="openArticle(${item.id})">
+            <div><div class="hero-sec-cat">${item.category}</div><div class="hero-sec-title">${item.title}</div></div>
+            <div class="hero-sec-meta"><span class="hero-sec-source">${item.source}</span><span class="art-sep">·</span><span class="hero-sec-time">il y a ${timeAgo(item.published_at)}</span></div>
+          </div>`).join('')}
+      </div>`;
+    page.appendChild(hs);
   }
  
-  // CATEGORIES
-  const catSection = document.createElement('div');
-  catSection.className = 'cat-grid-wrap';
- 
-  if (activeTab !== 'Tous') {
-    catSection.innerHTML = `
-      <div class="section-label">${activeTab}</div>
-      <div class="cat-grid" style="grid-template-columns:1fr;">
-        <div class="cat-card">
-          <div class="cat-card-header">
-            <span class="cat-card-title"><span class="cat-dot"></span>${activeTab}</span>
-            <span class="cat-count">${filtered.length} articles</span>
-          </div>
-          ${filtered.map(artHTML).join('')}
-        </div>
-      </div>
-    `;
+  // CATS
+  const catSec=document.createElement('div');catSec.className='cat-grid-wrap';
+  if(activeTab!=='Tous'){
+    catSec.innerHTML=`<div class="section-label">${activeTab}</div><div class="cat-grid" style="grid-template-columns:1fr;"><div class="cat-card"><div class="cat-card-header"><span class="cat-card-title"><span class="cat-dot"></span>${activeTab}</span><span class="cat-count">${filtered.length}</span></div>${filtered.map(artHTML).join('')}</div></div>`;
   } else {
-    const lbl = document.createElement('div');
-    lbl.className = 'section-label';
-    lbl.textContent = 'Toutes les catégories';
-    catSection.appendChild(lbl);
- 
-    const groups = groupBy(filtered);
-    const cats = Object.entries(groups);
- 
-    [[0,3],[3,6]].forEach(([from,to]) => {
-      const slice = cats.slice(from,to);
-      if (!slice.length) return;
-      const grid = document.createElement('div');
-      grid.className = from > 0 ? 'cat-grid' : 'cat-grid';
-      grid.style.marginTop = from > 0 ? '12px' : '0';
-      slice.forEach(([cat,items]) => {
-        const div = document.createElement('div');
-        div.className = 'cat-card';
-        div.innerHTML = `
-          <div class="cat-card-header">
-            <span class="cat-card-title"><span class="cat-dot"></span>${cat}</span>
-            <span class="cat-count">${items.length}</span>
-          </div>
-          ${items.slice(0,3).map(artHTML).join('')}
-        `;
-        grid.appendChild(div);
-      });
-      catSection.appendChild(grid);
+    const lbl=document.createElement('div');lbl.className='section-label';lbl.textContent='Toutes les catégories';catSec.appendChild(lbl);
+    const groups=groupBy(filtered);const cats=Object.entries(groups);
+    [[0,3],[3,6]].forEach(([from,to])=>{
+      const slice=cats.slice(from,to);if(!slice.length)return;
+      const grid=document.createElement('div');grid.className='cat-grid';grid.style.marginTop=from>0?'12px':'0';
+      slice.forEach(([cat,items])=>{const div=document.createElement('div');div.className='cat-card';div.innerHTML=`<div class="cat-card-header"><span class="cat-card-title"><span class="cat-dot"></span>${cat}</span><span class="cat-count">${items.length}</span></div>${items.slice(0,3).map(artHTML).join('')}`;grid.appendChild(div);});
+      catSec.appendChild(grid);
     });
- 
-    const last = cats.slice(6,8);
-    if (last.length) {
-      const grid = document.createElement('div');
-      grid.className = 'cat-grid-2';
-      last.forEach(([cat,items]) => {
-        const div = document.createElement('div');
-        div.className = 'cat-card';
-        div.innerHTML = `
-          <div class="cat-card-header">
-            <span class="cat-card-title"><span class="cat-dot"></span>${cat}</span>
-            <span class="cat-count">${items.length}</span>
-          </div>
-          ${items.slice(0,3).map(artHTML).join('')}
-        `;
-        grid.appendChild(div);
-      });
-      catSection.appendChild(grid);
-    }
+    const last=cats.slice(6,8);if(last.length){const g=document.createElement('div');g.className='cat-grid-2';last.forEach(([cat,items])=>{const div=document.createElement('div');div.className='cat-card';div.innerHTML=`<div class="cat-card-header"><span class="cat-card-title"><span class="cat-dot"></span>${cat}</span><span class="cat-count">${items.length}</span></div>${items.slice(0,3).map(artHTML).join('')}`;g.appendChild(div);});catSec.appendChild(g);}
   }
-  page.appendChild(catSection);
+  page.appendChild(catSec);
  
-  // TPE SECTION always on "Tous"
-  if (activeTab === 'Tous' && !searchQuery && !activeTag) {
-    renderTPESection(page);
-  }
+  if(activeTab==='Tous'&&!searchQuery&&!activeTag)renderTPESection(page);
  
-  // THEMES
-  if (activeTab === 'Tous') {
-    const tags = getAllTags();
-    const tw = document.createElement('div');
-    tw.className = 'themes-card';
-    tw.innerHTML = `
-      <div class="themes-heading">Thèmes du moment</div>
-      <div class="themes-list">
-        ${tags.map(([tag,count])=>`<span class="theme-tag ${activeTag===tag?'active':''}" onclick="filterTag('${tag}')">${tag}<span class="tag-n">${count}</span></span>`).join('')}
-      </div>
-    `;
+  if(activeTab==='Tous'){
+    const tags=getAllTags();const tw=document.createElement('div');tw.className='themes-card';
+    tw.innerHTML=`<div class="themes-heading">Thèmes du moment</div><div class="themes-list">${tags.map(([tag,count])=>`<span class="theme-tag ${activeTag===tag?'active':''}" onclick="filterTag('${tag}')">${tag}<span class="tag-n">${count}</span></span>`).join('')}</div>`;
     page.appendChild(tw);
   }
 }
  
-function filterTag(tag) { activeTag = activeTag===tag?'':tag; render(); }
+function filterTag(tag){activeTag=activeTag===tag?'':tag;renderHome();}
  
-document.getElementById('tabsBar').addEventListener('click', e => {
-  const t = e.target.closest('.tab');
-  if (!t) return;
+// ── EVENTS ──
+document.getElementById('tabsBar').addEventListener('click',e=>{
+  const t=e.target.closest('.tab');if(!t)return;
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  t.classList.add('active');
-  activeTab = t.dataset.cat; activeTag = ''; render();
+  t.classList.add('active');activeTab=t.dataset.cat;activeTag='';renderHome();
 });
  
 let st;
-document.getElementById('searchInput').addEventListener('input', e => {
-  clearTimeout(st); st = setTimeout(()=>{ searchQuery=e.target.value; render(); },220);
+document.getElementById('searchInput').addEventListener('input',e=>{
+  clearTimeout(st);st=setTimeout(()=>{searchQuery=e.target.value;if(currentArticleId===null)renderHome();},220);
 });
  
+document.querySelector('.nav-left').addEventListener('click',goHome);
+ 
+// ── INIT ──
 updateDatetime();
-setInterval(updateDatetime, 30000);
-setInterval(fetchData, 30*60*1000);
-fetchData();
+setInterval(updateDatetime,30000);
+lastUpdated=new Date();
+renderHome();
 </script>
 </body>
 </html>
