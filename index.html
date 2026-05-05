@@ -310,8 +310,7 @@ footer { background: var(--navy); padding: 16px 40px; display: flex; align-items
 </footer>
 
 <script>
-const DATA_URL = 'https://raw.githubusercontent.com/sachabryman-del/finary-intelligence-hub/main/articles.json';
-function ago(h){return new Date(Date.now()-h*3600000).toISOString();}
+const DATA_URL = '/articles.json';
 
 const MOCK=[
   {id:1,category:'Macro & Marchés',title:'La BCE maintient ses taux face à une inflation core persistante',source:'Les Echos',url:'https://lesechos.fr',summary:'La BCE maintient ses taux directeurs inchangés en mai, l\'inflation core restant au-dessus de 2%. Christine Lagarde souligne la nécessité de rester vigilant. Les marchés n\'anticipent plus de baisse avant septembre 2026.',analysis_context:'La BCE fait face à un dilemme classique : une économie qui ralentit mais une inflation persistante dans les services. Cette décision accentue la divergence avec la Fed qui a déjà amorcé son cycle de baisse.',analysis_impact:'Pour les portefeuilles des clients, le maintien des taux signifie que les rendements obligataires resteront élevés plus longtemps. Les fonds monétaires et les obligations court terme restent attractifs. Les clients exposés à l\'immobilier à taux variable doivent être monitorés.',analysis_action:'Opportunité de discussion avec les clients sur le repositionnement obligataire et la duration. Moment favorable pour sécuriser des rendements sur des maturités intermédiaires (3-5 ans) avant une éventuelle baisse.',key_figures:'[{"value":"2,3%","label":"Inflation core zone euro"},{"value":"4,5%","label":"Taux de dépôt BCE"},{"value":"Sept. 2026","label":"Première baisse anticipée"}]',signal:'Signal modéré — Pas d\'urgence mais discussion patrimoniale à déclencher avec les clients exposés aux taux variables.',published_at:ago(2),tags:'BCE,taux,inflation,obligataire'},
