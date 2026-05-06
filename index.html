@@ -6,7 +6,7 @@
 <title>Finary One — Intelligence Hub</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@300&display=swap');
-
+ 
 :root {
   --bg: #ece8e0;
   --cream: #f5f1ea;
@@ -31,11 +31,11 @@
   --sans: 'DM Sans', sans-serif;
   --mono: 'DM Mono', monospace;
 }
-
+ 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; min-height: 100vh; }
-
+ 
 /* ─── NAVBAR ─── */
 .navbar {
   position: sticky; top: 0; z-index: 200;
@@ -55,7 +55,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .nav-search input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,110,0.18); }
 .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 13px; pointer-events: none; }
 .nav-datetime { font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 0.04em; text-align: right; line-height: 1.5; flex-shrink: 0; }
-
+ 
 /* ─── BRIEFING BAR ─── */
 .briefing-bar { background: var(--navy); padding: 9px 40px; display: flex; align-items: center; gap: 12px; }
 .live-pill { display: flex; align-items: center; gap: 5px; background: rgba(201,169,110,0.2); border: 1px solid rgba(201,169,110,0.35); padding: 2px 10px; border-radius: 100px; flex-shrink: 0; }
@@ -65,7 +65,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .briefing-stats { font-size: 12px; color: rgba(255,255,255,0.55); }
 .briefing-stats strong { color: var(--gold-light); font-weight: 500; }
 .briefing-time { margin-left: auto; font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.3); }
-
+ 
 /* ─── TABS ─── */
 .tabs-bar { background: var(--cream2); border-bottom: 1px solid var(--border2); padding: 0 40px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
 .tabs-bar::-webkit-scrollbar { display: none; }
@@ -73,17 +73,17 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .tab:hover { color: var(--text2); }
 .tab.active { color: var(--gold-dark); font-weight: 500; border-bottom-color: var(--gold); }
 .tab-new { font-size: 8px; font-weight: 600; color: var(--gold-dark); background: rgba(201,169,110,0.18); padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle; }
-
+ 
 /* ─── PAGES ─── */
 .page { display: none; }
 .page.active { display: block; }
-
+ 
 /* ─── HOME PAGE ─── */
 #homePage { padding: 36px 40px 64px; }
-
+ 
 .section-label { font-size: 10px; font-weight: 600; color: var(--gold-dark); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 .section-label::after { content:''; flex:1; height:1px; background:var(--border2); }
-
+ 
 /* hero */
 .hero-section { margin-bottom: 44px; }
 .hero-grid { display: grid; grid-template-columns: 1.65fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
@@ -105,7 +105,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .hero-sec-meta { display: flex; align-items: center; gap: 6px; }
 .hero-sec-source { font-size: 11px; color: var(--gold-dark); font-weight: 500; }
 .hero-sec-time { font-family: var(--mono); font-size: 10px; color: var(--text3); }
-
+ 
 /* cat grids */
 .cat-grid-wrap { margin-bottom: 44px; }
 .cat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
@@ -116,7 +116,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .cat-card-title { font-size: 10px; font-weight: 600; color: var(--gold-dark); letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
 .cat-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 .cat-count { font-family: var(--mono); font-size: 10px; color: var(--text3); background: rgba(201,169,110,0.1); padding: 2px 7px; border-radius: 20px; }
-
+ 
 /* article list items */
 .art-item { padding: 9px 0; border-bottom: 1px solid rgba(90,70,30,0.06); }
 .art-item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -128,7 +128,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .art-sep { font-size: 10px; color: var(--border2); }
 .art-time { font-family: var(--mono); font-size: 10px; color: var(--text3); }
 .art-summary-inline { margin-top: 7px; padding: 8px 12px; background: rgba(201,169,110,0.07); border-left: 2px solid var(--gold); border-radius: 0 6px 6px 0; font-size: 12px; color: var(--text2); line-height: 1.65; }
-
+ 
 /* TPE section */
 .tpe-section { margin-bottom: 44px; }
 .tpe-banner { background: linear-gradient(135deg,#2c1f0e 0%,#3d2c14 50%,#2c1f0e 100%); border-radius: 16px 16px 0 0; padding: 18px 28px; display: flex; align-items: center; justify-content: space-between; }
@@ -160,7 +160,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .tpe-sources-label { font-size: 10px; color: var(--text3); }
 .tpe-source-link { font-size: 11px; color: var(--tpe-accent); text-decoration: none; padding: 3px 10px; border: 1px solid rgba(122,92,58,0.2); border-radius: 20px; transition: all 0.15s; }
 .tpe-source-link:hover { background: rgba(122,92,58,0.1); border-color: rgba(122,92,58,0.35); }
-
+ 
 /* themes */
 .themes-card { background: var(--navy); border-radius: 16px; padding: 22px 24px; box-shadow: var(--shadow-lg); }
 .themes-heading { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
@@ -169,10 +169,10 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .theme-tag:hover { color: var(--gold-light); border-color: rgba(201,169,110,0.35); background: rgba(201,169,110,0.08); }
 .theme-tag.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 500; }
 .tag-n { font-size: 9px; opacity: 0.5; margin-left: 2px; }
-
+ 
 /* ─── ARTICLE PAGE ─── */
 #articlePage { padding: 0 0 64px; }
-
+ 
 .article-hero {
   background: var(--navy);
   padding: 48px 40px 56px;
@@ -191,9 +191,9 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .article-meta-time { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.35); }
 .article-meta-tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .article-tag { font-size: 10px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); padding: 2px 9px; border-radius: 100px; }
-
+ 
 .article-body { max-width: 780px; margin: 0 auto; padding: 40px 40px 0; }
-
+ 
 /* summary box */
 .article-summary-box {
   background: var(--white); border-radius: 16px; padding: 28px 32px;
@@ -203,29 +203,29 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .article-summary-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--gold), var(--gold-light)); border-radius: 4px 0 0 4px; }
 .summary-label { font-size: 9px; font-weight: 600; color: var(--gold-dark); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; }
 .summary-text { font-size: 15px; color: var(--text); line-height: 1.75; font-weight: 400; }
-
+ 
 /* analysis */
 .article-analysis { margin-bottom: 32px; }
 .analysis-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border2); }
-
+ 
 .analysis-block { margin-bottom: 20px; }
 .analysis-block-label { font-size: 10px; font-weight: 600; color: var(--gold-dark); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
 .analysis-block-label::before { content: ''; width: 3px; height: 12px; background: var(--gold); border-radius: 2px; flex-shrink: 0; }
 .analysis-block-text { font-size: 14px; color: var(--text2); line-height: 1.75; }
-
+ 
 /* key figures */
 .key-figures { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 28px; }
 .key-figure { background: var(--white); border-radius: 12px; padding: 16px 18px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: center; }
 .key-figure-value { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 6px; }
 .key-figure-label { font-size: 11px; color: var(--text3); line-height: 1.4; }
-
+ 
 /* signal box */
 .signal-box { background: linear-gradient(135deg, rgba(14,21,53,0.04), rgba(14,21,53,0.08)); border: 1px solid rgba(14,21,53,0.15); border-radius: 12px; padding: 20px 24px; margin-bottom: 28px; }
 .signal-box-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 .signal-icon { width: 28px; height: 28px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
 .signal-title { font-size: 12px; font-weight: 600; color: var(--navy); letter-spacing: 0.04em; }
 .signal-text { font-size: 13px; color: var(--text2); line-height: 1.7; }
-
+ 
 /* CTA source */
 .article-cta { background: var(--cream2); border-radius: 14px; padding: 22px 28px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border2); box-shadow: var(--shadow-sm); margin-bottom: 32px; }
 .article-cta-left { }
@@ -234,7 +234,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .article-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: #fff; font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 10px 22px; border-radius: 100px; border: none; cursor: pointer; text-decoration: none; transition: background 0.15s, transform 0.15s; white-space: nowrap; }
 .article-cta-btn:hover { background: var(--navy2); transform: translateY(-1px); }
 .article-cta-btn-arrow { font-size: 14px; }
-
+ 
 /* related */
 .related-section { }
 .related-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 14px; }
@@ -244,16 +244,16 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); -web
 .related-title { font-family: var(--serif); font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.4; margin-bottom: 8px; }
 .related-card:hover .related-title { color: var(--navy); }
 .related-meta { font-size: 11px; color: var(--gold-dark); }
-
+ 
 /* footer */
 footer { background: var(--navy); padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; }
 .footer-brand { font-family: var(--serif); font-size: 14px; color: rgba(255,255,255,0.35); }
 .footer-brand em { color: var(--gold); font-style: italic; }
 .footer-info { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.22); letter-spacing: 0.04em; }
-
+ 
 .no-results { padding: 60px; text-align: center; }
 .no-results p { font-size: 14px; color: var(--text3); }
-
+ 
 @media(max-width:900px){
   .navbar,.briefing-bar,.tabs-bar,#homePage,.article-body { padding-left:16px; padding-right:16px; }
   .article-hero { padding: 32px 16px 40px; }
@@ -267,7 +267,7 @@ footer { background: var(--navy); padding: 16px 40px; display: flex; align-items
 </style>
 </head>
 <body>
-
+ 
 <nav class="navbar">
   <div class="nav-left" onclick="goHome()">
     <span class="nav-brand-name">Finary <em>One</em></span>
@@ -279,13 +279,13 @@ footer { background: var(--navy); padding: 16px 40px; display: flex; align-items
   </div>
   <div class="nav-datetime" id="datetime"></div>
 </nav>
-
+ 
 <div class="briefing-bar" id="briefingBar">
   <div class="live-pill"><div class="live-dot"></div><span class="live-text">Live</span></div>
   <div class="briefing-stats" id="briefingText">Chargement…</div>
   <div class="briefing-time" id="briefingTime"></div>
 </div>
-
+ 
 <div class="tabs-bar" id="tabsBar">
   <div class="tab active" data-cat="Tous">Tous</div>
   <div class="tab" data-cat="Macro & Marchés">Macro & Marchés</div>
@@ -297,22 +297,22 @@ footer { background: var(--navy); padding: 16px 40px; display: flex; align-items
   <div class="tab" data-cat="Startups FR">Startups FR</div>
   <div class="tab" data-cat="Cessions TPE/PME/ETI">Cessions TPE/PME/ETI <span class="tab-new">NEW</span></div>
 </div>
-
+ 
 <!-- HOME PAGE -->
 <div id="homePage" class="page active"></div>
-
+ 
 <!-- ARTICLE PAGE -->
 <div id="articlePage" class="page"></div>
-
+ 
 <footer>
   <span class="footer-brand">Finary <em>One</em> — Intelligence Hub</span>
   <span class="footer-info" id="footerInfo">Auto-refresh · 30 min</span>
 </footer>
-
+ 
 <script>
 const DATA_URL = 'https://raw.githubusercontent.com/sachabryman-del/finary-intelligence-hub/main/articles.json';
 function ago(h){return new Date(Date.now()-h*3600000).toISOString();}
-
+ 
 const MOCK=[
   {id:1,category:'Macro & Marchés',title:'La BCE maintient ses taux face à une inflation core persistante',source:'Les Echos',url:'https://lesechos.fr',summary:'La BCE maintient ses taux directeurs inchangés en mai, l\'inflation core restant au-dessus de 2%. Christine Lagarde souligne la nécessité de rester vigilant. Les marchés n\'anticipent plus de baisse avant septembre 2026.',analysis_context:'La BCE fait face à un dilemme classique : une économie qui ralentit mais une inflation persistante dans les services. Cette décision accentue la divergence avec la Fed qui a déjà amorcé son cycle de baisse.',analysis_impact:'Pour les portefeuilles des clients, le maintien des taux signifie que les rendements obligataires resteront élevés plus longtemps. Les fonds monétaires et les obligations court terme restent attractifs. Les clients exposés à l\'immobilier à taux variable doivent être monitorés.',analysis_action:'Opportunité de discussion avec les clients sur le repositionnement obligataire et la duration. Moment favorable pour sécuriser des rendements sur des maturités intermédiaires (3-5 ans) avant une éventuelle baisse.',key_figures:'[{"value":"2,3%","label":"Inflation core zone euro"},{"value":"4,5%","label":"Taux de dépôt BCE"},{"value":"Sept. 2026","label":"Première baisse anticipée"}]',signal:'Signal modéré — Pas d\'urgence mais discussion patrimoniale à déclencher avec les clients exposés aux taux variables.',published_at:ago(2),tags:'BCE,taux,inflation,obligataire'},
   {id:2,category:'Macro & Marchés',title:'Le CAC 40 franchit un nouveau plus haut historique porté par le luxe',source:'Bloomberg',url:'https://bloomberg.com',summary:'Le CAC 40 inscrit un nouveau record historique à 8 420 points, porté par LVMH (+4,2%), Hermès (+3,8%) et Kering (+2,9%) après des chiffres Asie solides. Volume en hausse de 35% vs moyenne.',analysis_context:'La reprise de la consommation de luxe en Chine post-réouverture confirme la résilience des marques françaises dans un contexte macro incertain. L\'indice CAC40 est désormais à +18% sur l\'année.',analysis_impact:'Les clients surexposés au luxe bénéficient de la performance mais voient leur concentration risque augmenter. Le CAC40 représente désormais >30% dans certains portefeuilles sans rééquilibrage.',analysis_action:'Revue des allocations actions françaises. Potentielle occasion de prise de bénéfice partielle et redéploiement vers d\'autres géographies (Asie émergente, US small caps) pour diversifier.',key_figures:'[{"value":"8 420","label":"CAC40 nouveau record"},{"value":"+18%","label":"Performance YTD"},{"value":"+35%","label":"Volumes vs moyenne"}]',signal:'Signal commercial — Les clients avec PEA chargés en valeurs luxe sont à appeler pour revue d\'allocation.',published_at:ago(5),tags:'CAC40,luxe,LVMH,actions'},
@@ -342,24 +342,24 @@ const MOCK=[
   {id:26,category:'Cessions TPE/PME/ETI',title:'Studio de communication digitale Lyon (CA 640k€) — départ fondateur',source:'Fusacq',url:'https://www.fusacq.com/buzz/fr',summary:'Agence digitale spécialisée secteur santé, 5 salariés, MRR stable. Fondateur en reconversion, transition 6 mois. Prix demandé : 280k€.',analysis_context:'Le marché des agences digitales spécialisées est actif. La spécialisation santé est un avantage concurrentiel dans un secteur en forte digitalisation.',analysis_impact:'Capital de cession net ~200k€ pour le fondateur. Profil jeune (reconversion), horizon d\'investissement long, potentiellement intéressé par des produits de diversification (SCPI, fonds de croissance).',analysis_action:'Prospect post-cession avec capital modeste mais horizon long. Produits adaptés : assurance-vie en UC, PEA PME, fonds diversifiés.',key_figures:'[{"value":"640k€","label":"Chiffre d\'affaires"},{"value":"280k€","label":"Prix demandé"},{"value":"~200k€","label":"Net estimé après impôts"}]',signal:'Signal commercial TPE — Fondateur jeune en reconversion : prospect long terme à intégrer.',published_at:ago(12),tags:'TPE,digital,santé,Lyon,cession',taille:'TPE'},
   {id:27,category:'Cessions TPE/PME/ETI',title:'PME logistique e-commerce Bretagne cherche investisseur (CA 7 M€)',source:'Le Journal des Entreprises',url:'https://www.lejournaldesentreprises.com/',summary:'Opérateur logistique e-commerce, 35 salariés, croissance +25%/an sur 3 ans. Dirigeant cherche minoritaire pour ouvrir un 3e entrepôt. Non dilutif souhaité, OC ou prêt participatif.',analysis_context:'La logistique e-commerce régionale connaît une consolidation rapide. Les acteurs indépendants de taille intermédiaire sont soit repris par les grands groupes soit refinancés pour accélérer.',analysis_impact:'Dirigeant en phase de croissance, pas encore en mode cession. Profil : entrepreneur 40-50 ans, peu de patrimoine liquide mais création de valeur rapide. Horizon de cession probable : 3-5 ans.',analysis_action:'Approche différente : accompagnement sur le financement de la croissance (OC, capital dev) et anticipation de la cession future. Construire la relation maintenant pour être présent lors de la liquidité.',key_figures:'[{"value":"7 M€","label":"Chiffre d\'affaires"},{"value":"+25%","label":"Croissance annuelle sur 3 ans"},{"value":"35","label":"Salariés"}]',signal:'Signal prospect — Dirigeant en croissance : construire la relation pour être présent à la cession future.',published_at:ago(18),tags:'PME,logistique,e-commerce,Bretagne,croissance',taille:'PME'},
 ];
-
+ 
 const TPE_DATA = MOCK.filter(i=>i.category==='Cessions TPE/PME/ETI');
 const MAIN_DATA = MOCK.filter(i=>i.category!=='Cessions TPE/PME/ETI');
-
+ 
 let allData=MAIN_DATA, tpeData=TPE_DATA, activeTab='Tous', searchQuery='', activeTag='', lastUpdated=null;
 let currentArticleId = null;
-
+ 
 // ── UTILS ──
 function timeAgo(d){const s=Math.floor((Date.now()-new Date(d))/1000);if(s<60)return'à l\'instant';if(s<3600)return`${Math.floor(s/60)} min`;if(s<86400)return`${Math.floor(s/3600)} h`;return`${Math.floor(s/86400)} j`;}
 function updateDatetime(){const n=new Date();const d=n.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});const t=n.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});document.getElementById('datetime').innerHTML=`${d.charAt(0).toUpperCase()+d.slice(1)}<br>${t}`;}
-
+ 
 // ── NAVIGATION ──
 function showPage(pageId) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
   window.scrollTo(0,0);
 }
-
+ 
 function goHome() {
   currentArticleId = null;
   document.getElementById('tabsBar').style.display = 'flex';
@@ -367,7 +367,7 @@ function goHome() {
   document.getElementById('searchInput').parentElement.style.display = 'block';
   showPage('homePage');
 }
-
+ 
 function openArticle(id) {
   const all = [...allData, ...tpeData];
   const item = all.find(a=>a.id===id);
@@ -377,17 +377,17 @@ function openArticle(id) {
   renderArticlePage(item);
   showPage('articlePage');
 }
-
+ 
 // ── ARTICLE PAGE ──
 function renderArticlePage(item) {
   const figures = item.key_figures ? JSON.parse(item.key_figures) : [];
   const tags = (item.tags||'').split(',').filter(Boolean);
   const isTpe = item.category==='Cessions TPE/PME/ETI';
-
+ 
   // Related articles
   const all = [...allData, ...tpeData];
   const related = all.filter(a=>a.id!==item.id && (a.category===item.category || (item.tags||'').split(',').some(t=>(a.tags||'').includes(t.trim())))).slice(0,4);
-
+ 
   document.getElementById('articlePage').innerHTML = `
     <div class="article-hero">
       <div class="article-hero-bg"></div>
@@ -407,15 +407,15 @@ function renderArticlePage(item) {
         </div>
       </div>
     </div>
-
+ 
     <div class="article-body">
-
+ 
       <!-- RÉSUMÉ -->
       <div class="article-summary-box">
         <div class="summary-label">Résumé · 4 points clés</div>
         <div class="summary-text">${item.summary}</div>
       </div>
-
+ 
       <!-- CHIFFRES CLÉS -->
       ${figures.length ? `
         <div class="key-figures">
@@ -427,25 +427,25 @@ function renderArticlePage(item) {
           `).join('')}
         </div>
       ` : ''}
-
+ 
       <!-- ANALYSE APPROFONDIE -->
       <div class="article-analysis">
         <div class="analysis-title">Analyse Finary One</div>
-
+ 
         ${item.analysis_context ? `
           <div class="analysis-block">
             <div class="analysis-block-label">Contexte</div>
             <div class="analysis-block-text">${item.analysis_context}</div>
           </div>
         ` : ''}
-
+ 
         ${item.analysis_impact ? `
           <div class="analysis-block">
             <div class="analysis-block-label">Impact pour les portefeuilles</div>
             <div class="analysis-block-text">${item.analysis_impact}</div>
           </div>
         ` : ''}
-
+ 
         ${item.analysis_action ? `
           <div class="analysis-block">
             <div class="analysis-block-label">Actions recommandées</div>
@@ -453,7 +453,7 @@ function renderArticlePage(item) {
           </div>
         ` : ''}
       </div>
-
+ 
       <!-- SIGNAL COMMERCIAL -->
       ${item.signal ? `
         <div class="signal-box">
@@ -464,7 +464,7 @@ function renderArticlePage(item) {
           <div class="signal-text">${item.signal}</div>
         </div>
       ` : ''}
-
+ 
       <!-- CTA SOURCE -->
       <div class="article-cta">
         <div class="article-cta-left">
@@ -475,7 +475,7 @@ function renderArticlePage(item) {
           Lire l'article original <span class="article-cta-btn-arrow">↗</span>
         </a>
       </div>
-
+ 
       <!-- ARTICLES LIÉS -->
       ${related.length ? `
         <div class="related-section">
@@ -491,11 +491,11 @@ function renderArticlePage(item) {
           </div>
         </div>
       ` : ''}
-
+ 
     </div>
   `;
 }
-
+ 
 // ── HOME RENDER ──
 function getFiltered(){
   const pool=activeTab==='Cessions TPE/PME/ETI'?tpeData:allData;
@@ -507,15 +507,15 @@ function getFiltered(){
     return mt&&ms&&mg;
   });
 }
-
+ 
 function getAllTags(){
   const tc={};
   [...allData,...tpeData].forEach(item=>(item.tags||'').split(',').forEach(t=>{const s=t.trim();if(s)tc[s]=(tc[s]||0)+1;}));
   return Object.entries(tc).sort((a,b)=>b[1]-a[1]).slice(0,22);
 }
-
+ 
 function groupBy(items){const g={};items.forEach(item=>{if(!g[item.category])g[item.category]=[];g[item.category].push(item);});return g;}
-
+ 
 function artHTML(item){
   return `<div class="art-item">
     <div class="art-title-link" onclick="openArticle(${item.id})">${item.title}</div>
@@ -527,7 +527,7 @@ function artHTML(item){
     ${item.summary?`<div class="art-summary-inline">${item.summary}</div>`:''}
   </div>`;
 }
-
+ 
 function tpeItemHTML(item){
   const sizeColors={TPE:{c:'#7a5c3a',bg:'rgba(122,92,58,0.1)'},PME:{c:'#3a6040',bg:'rgba(58,96,64,0.1)'},ETI:{c:'#2d4080',bg:'rgba(45,64,128,0.1)'}};
   const sc=sizeColors[item.taille]||sizeColors.TPE;
@@ -540,7 +540,7 @@ function tpeItemHTML(item){
     </div>
   </div>`;
 }
-
+ 
 function renderTPESection(page){
   const tpe=tpeData.filter(item=>{const q=searchQuery.toLowerCase();return(!q||item.title.toLowerCase().includes(q)||(item.tags||'').toLowerCase().includes(q))&&(!activeTag||(item.tags||'').toLowerCase().includes(activeTag.toLowerCase()));});
   const tpeCt=tpeData.filter(i=>i.taille==='TPE').length;
@@ -576,7 +576,7 @@ function renderTPESection(page){
     grid.appendChild(card);
   });
 }
-
+ 
 function renderHome(){
   const filtered=getFiltered();
   const page=document.getElementById('homePage');
@@ -588,10 +588,10 @@ function renderHome(){
   document.getElementById('briefingTime').textContent=`Mis à jour · ${t}`;
   document.getElementById('footerInfo').textContent=`Dernière actualisation · ${t} · Auto-refresh 30 min`;
   page.innerHTML='';
-
+ 
   if(activeTab==='Cessions TPE/PME/ETI'){renderTPESection(page);return;}
   if(!filtered.length){page.innerHTML='<div class="no-results"><p>Aucun résultat</p></div>';return;}
-
+ 
   // HERO
   if(activeTab==='Tous'&&!searchQuery&&!activeTag){
     const heroItems=[...filtered].sort((a,b)=>new Date(b.published_at)-new Date(a.published_at)).slice(0,3);
@@ -615,7 +615,7 @@ function renderHome(){
       </div>`;
     page.appendChild(hs);
   }
-
+ 
   // CATS
   const catSec=document.createElement('div');catSec.className='cat-grid-wrap';
   if(activeTab!=='Tous'){
@@ -632,32 +632,32 @@ function renderHome(){
     const last=cats.slice(6,8);if(last.length){const g=document.createElement('div');g.className='cat-grid-2';last.forEach(([cat,items])=>{const div=document.createElement('div');div.className='cat-card';div.innerHTML=`<div class="cat-card-header"><span class="cat-card-title"><span class="cat-dot"></span>${cat}</span><span class="cat-count">${items.length}</span></div>${items.slice(0,3).map(artHTML).join('')}`;g.appendChild(div);});catSec.appendChild(g);}
   }
   page.appendChild(catSec);
-
+ 
   if(activeTab==='Tous'&&!searchQuery&&!activeTag)renderTPESection(page);
-
+ 
   if(activeTab==='Tous'){
     const tags=getAllTags();const tw=document.createElement('div');tw.className='themes-card';
     tw.innerHTML=`<div class="themes-heading">Thèmes du moment</div><div class="themes-list">${tags.map(([tag,count])=>`<span class="theme-tag ${activeTag===tag?'active':''}" onclick="filterTag('${tag}')">${tag}<span class="tag-n">${count}</span></span>`).join('')}</div>`;
     page.appendChild(tw);
   }
 }
-
+ 
 function filterTag(tag){activeTag=activeTag===tag?'':tag;renderHome();}
-
+ 
 // ── EVENTS ──
 document.getElementById('tabsBar').addEventListener('click',e=>{
   const t=e.target.closest('.tab');if(!t)return;
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');activeTab=t.dataset.cat;activeTag='';renderHome();
 });
-
+ 
 let st;
 document.getElementById('searchInput').addEventListener('input',e=>{
   clearTimeout(st);st=setTimeout(()=>{searchQuery=e.target.value;if(currentArticleId===null)renderHome();},220);
 });
-
+ 
 document.querySelector('.nav-left').addEventListener('click',goHome);
-
+ 
 // ── INIT ──
 async function fetchArticles() {
   try {
